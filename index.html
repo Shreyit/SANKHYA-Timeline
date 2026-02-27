@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANKHYA 2026 | Closing the Loop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Orbitron:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#1A2F23',
+                        'eco-accent': '#4ade80',
+                        'eco-gold': '#C5A059',
+                        'eco-cream': '#F9F7F2',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        header: ['Montserrat', 'sans-serif'],
+                        digital: ['Orbitron', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D1A13; /* Deep Dark Green */
+            color: #F9F7F2;
+            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .glass-card {
+            background: rgba(26, 47, 35, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rotating Loop Animation */
+        .loop-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent, 
+                rgba(197, 160, 89, 0.4), 
+                #C5A059, 
+                rgba(74, 222, 128, 0.4), 
+                transparent 40%
+            );
+            animation: rotate 6s linear infinite;
+            z-index: -1;
+        }
+        .loop-border::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: #1A2F23;
+            border-radius: 1rem;
+            z-index: -1;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Leaf Animation */
+        .leaf {
+            position: fixed;
+            top: -10%;
+            user-select: none;
+            pointer-events: none;
+            z-index: 10;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .digital-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
+        }
+
+        .header-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-link:hover {
+            text-shadow: 0 0 8px rgba(197, 160, 89, 0.6);
+        }
+    </style>
+</head>
+<body class="relative text-center">
+
+    <!-- Hero Section -->
+    <header class="w-full max-w-4xl px-6 pt-10 pb-4 z-20">
+        <h1 class="text-6xl md:text-8xl lg:text-9xl header-font font-extrabold tracking-tighter text-white mb-2 drop-shadow-2xl">
+            SANKHYA <span class="text-eco-gold">2026</span>
+        </h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-5xl px-6 flex flex-col items-center justify-center relative z-20">
+        <!-- Central Loop Decoration -->
+        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
+            <svg width="400" height="400" viewBox="0 0 100 100" class="w-64 h-64 md:w-[500px] md:h-[500px] animate-[spin_120s_linear_infinite]">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#C5A059" stroke-width="0.1" stroke-dasharray="2 2" />
+                <path d="M50 5 A45 45 0 0 1 95 50" fill="none" stroke="#4ade80" stroke-width="0.3" />
+            </svg>
+        </div>
+
+        <!-- Countdown -->
+        <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 w-full max-w-4xl px-4">
+            <div class="glass-card loop-border rounded-xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
+                <span id="days" class="text-4xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-eco-accent mt-3">Days</span>
+            </div>
+            <div class="glass-card loop-border rounded-xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
+                <span id="hours" class="text-4xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-eco-accent mt-3">Hours</span>
+            </div>
+            <div class="glass-card loop-border rounded-xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
+                <span id="minutes" class="text-4xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-eco-accent mt-3">Minutes</span>
+            </div>
+            <div class="glass-card loop-border rounded-xl p-6 md:p-8 flex flex-col items-center shadow-2xl">
+                <span id="seconds" class="text-4xl md:text-6xl lg:text-7xl digital-font font-bold text-eco-gold">00</span>
+                <span class="text-[10px] md:text-xs uppercase tracking-widest text-eco-accent mt-3">Seconds</span>
+            </div>
+        </div>
+
+        <!-- About -->
+        <section class="mt-10 md:mt-14 max-w-3xl text-center px-6">
+            <h2 class="text-xl md:text-2xl header-font font-semibold mb-4 text-eco-gold uppercase tracking-[0.3em]">About the Event</h2>
+            <p class="text-sm md:text-lg text-eco-cream/70 leading-relaxed max-w-2xl mx-auto">
+                Sankhya is the annual cultural fest organised by the <strong>BS in Analytics and Sustainability Studies</strong> at <strong>Tata Institute of Social Sciences Mumbai</strong>. Rooted in the theme for this year <strong>“Circle of Life”</strong>, Sankhya celebrates the idea of a <strong>Circular Economy</strong>, where growth, creativity, and responsibility flow together in harmony.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-6 bg-black/40 backdrop-blur-md border-t border-eco-gold/10 z-30">
+        <div class="max-w-5xl mx-auto px-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <p class="text-xl font-extrabold text-white tracking-tighter">SANKHYA 2026</p>
+                <p class="text-eco-accent/60 uppercase tracking-widest text-[10px]">College Cultural Committee</p>
+            </div>
+            <div class="flex flex-col md:items-end space-y-2 text-xs">
+                <!-- Gmail -->
+                <a href="mailto:sankhya@stud.tiss.ac.in" class="footer-link flex items-center gap-2 text-eco-cream/80 hover:text-eco-gold transition-all duration-300">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <span>sankhya@stud.tiss.ac.in</span>
+                </a>
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/tiss.sankhya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-link flex items-center gap-2 text-eco-cream/80 hover:text-eco-gold transition-all duration-300">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <span>@tiss.sankhya</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Logic
+        const targetDate = new Date('March 13, 2026 09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<div class='col-span-4 text-3xl font-bold text-eco-accent'>THE EVENT HAS STARTED!</div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Falling Leaves Animation Logic
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.className = 'leaf';
+            leaf.style.left = Math.random() * 100 + 'vw';
+            leaf.style.animationDuration = Math.random() * 5 + 5 + 's';
+            leaf.style.opacity = Math.random();
+            
+            // Random green/gold SVG leaves
+            const size = Math.random() * 20 + 10;
+            const color = Math.random() > 0.5 ? '#4ade80' : '#C5A059';
+            leaf.innerHTML = `
+                <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" style="opacity: 0.4">
+                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
+                </svg>
+            `;
+            
+            document.body.appendChild(leaf);
+            setTimeout(() => leaf.remove(), 10000);
+        }
+
+        setInterval(createLeaf, 300);
+    </script>
+</body>
+</html>
