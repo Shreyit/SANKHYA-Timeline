@@ -29,7 +29,7 @@
     </script>
     <style>
         body {
-            background-color: #0D1A13; /* Deep Dark Green */
+            background-color: #0D1A13;
             color: #F9F7F2;
             background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
             min-height: 100vh;
@@ -38,6 +38,50 @@
             align-items: center;
             justify-content: space-between;
         }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(197, 160, 89, 0.6); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.8)); }
+        }
+
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .animate-fade-in-down { animation: fadeInDown 0.6s ease-out forwards; opacity: 0; }
+        .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
         
         .glass-card {
             background: rgba(26, 47, 35, 0.6);
@@ -130,23 +174,40 @@
             box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
             border-color: rgba(197, 160, 89, 0.6);
         }
+
+        .countdown-box {
+            transition: all 0.3s ease;
+        }
+        .countdown-box:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 40px rgba(197, 160, 89, 0.4);
+            border-color: rgba(197, 160, 89, 0.5);
+        }
+        .countdown-box:hover .digital-font {
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.8);
+        }
+
+        .logo-hover {
+            transition: all 0.4s ease;
+        }
+        .logo-hover:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
+        }
     </style>
 </head>
 <body class="relative text-center">
 
     <!-- Hero Section -->
     <header class="w-full flex flex-col items-center pt-2 px-4 md:pt-4 md:px-8 z-30">
-        <div class="w-full flex justify-between items-start">
-            <img src="img/TISS_logo.png" alt="TISS Logo" class="mt-4 md:mt-8 h-14 md:h-28 w-auto drop-shadow-xl">
-            <img src="img/Sankhya_white.svg" alt="Sankhya Logo" class="h-20 md:h-40 w-auto drop-shadow-xl">
+        <div class="w-full flex justify-between items-center gap-4">
+            <img src="img/TISS_logo.png" alt="TISS Logo" class="mt-4 md:mt-8 h-12 md:h-24 w-auto drop-shadow-xl logo-hover animate-float">
+            <img src="img/Sankhya_white.svg" alt="Sankhya Logo" class="mt-4 md:mt-8 h-14 md:h-32 w-auto drop-shadow-xl logo-hover animate-float delay-200">
         </div>
-        <div class="-mt-12 md:-mt-24 lg:-mt-32 relative z-10">
-            <h1 class="text-5xl md:text-8xl lg:text-9xl header-font font-extrabold tracking-tighter text-white mb-2 drop-shadow-2xl cursor-default select-none">
+        <div class="mt-4 md:mt-8 relative z-10">
+            <h1 class="text-5xl md:text-8xl lg:text-9xl header-font font-extrabold tracking-tighter text-white mb-2 drop-shadow-2xl cursor-default select-none animate-fade-in-down">
                 <span class="bulge-text">SANKHYA</span> <span class="text-eco-gold bulge-text">2026</span>
             </h1>
-            <div class="digital-font text-xl md:text-3xl lg:text-4xl text-eco-accent tracking-[0.5em] mt-2 md:mt-4 opacity-80 cursor-default select-none drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">
-                COUNTDOWN
-            </div>
         </div>
     </header>
 
@@ -160,28 +221,33 @@
             </svg>
         </div>
 
+        <!-- Countdown Label -->
+        <div class="digital-font text-xl md:text-3xl lg:text-4xl text-eco-accent tracking-[0.5em] mt-8 md:mt-12 opacity-80 cursor-default select-none drop-shadow-[0_0_10px_rgba(74,222,128,0.5)] animate-fade-in-up delay-300">
+            COUNTDOWN
+        </div>
+
         <!-- Countdown -->
-        <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-8 w-full max-w-4xl px-2 md:px-4">
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
+        <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-8 w-full max-w-4xl px-2 md:px-4 mt-4 md:mt-6">
+            <div class="glass-card loop-border glass-bulge countdown-box rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default animate-fade-in-up delay-400">
                 <span id="days" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
                 <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Days</span>
             </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
+            <div class="glass-card loop-border glass-bulge countdown-box rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default animate-fade-in-up delay-500">
                 <span id="hours" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
                 <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Hours</span>
             </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
+            <div class="glass-card loop-border glass-bulge countdown-box rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default animate-fade-in-up delay-600">
                 <span id="minutes" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
                 <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Minutes</span>
             </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
+            <div class="glass-card loop-border glass-bulge countdown-box rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default animate-fade-in-up delay-700">
                 <span id="seconds" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-eco-gold">00</span>
                 <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Seconds</span>
             </div>
         </div>
 
         <!-- About -->
-        <section class="mt-10 md:mt-14 max-w-3xl text-center px-6">
+        <section class="mt-10 md:mt-14 max-w-3xl text-center px-6 animate-fade-in-up delay-700">
             <h2 class="text-xl md:text-2xl header-font font-semibold mb-4 text-eco-gold uppercase tracking-[0.3em]">About the Event</h2>
             <p class="text-sm md:text-lg text-eco-cream/70 leading-relaxed max-w-2xl mx-auto">
                 Sankhya is the annual cultural fest organised by the <strong>BS in Analytics and Sustainability Studies</strong> at <strong>Tata Institute of Social Sciences Mumbai</strong>. Rooted in the theme for this year <strong>“Circle of Life”</strong>, Sankhya celebrates the idea of a <strong>Circular Economy</strong>, where growth, creativity, and responsibility flow together in harmony.
