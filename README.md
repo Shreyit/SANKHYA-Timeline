@@ -76,4 +76,4 @@ Check out the live countdown here:
 
 ---
 
-Developed with 💚 by **me as a part of SANKHYA 2026 Design & Marketing Team.**
+Developed with 💚 by **[me](https://github.com/Shreyit) as a part of SANKHYA 2026 Design & Marketing Team.**
