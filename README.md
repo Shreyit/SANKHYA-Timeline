@@ -1,9 +1,9 @@
 # SANKHYA 2026 | Countdown Portal
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://sankhya-timeline-8h2uk1rig-shreyits-projects.vercel.app/)
-[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black.svg)](https://sankhya-timeline-8h2uk1rig-shreyits-projects.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://sankhya-timeline.vercel.app/)
+[![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-black.svg)](https://sankhya-timeline.vercel.app/)
 
-Sankhya is the annual cultural fest organized by the **BS in Analytics and Sustainability Studies** at **Tata Institute of Social Sciences (TISS) Mumbai**. 
+Sankhya is the annual cultural fest organized by the **BS in Analytics and Sustainability Studies** at **Tata Institute of Social Sciences (TISS) Mumbai**.
 
 The 2026 edition, themed **"Circle of Life"**, celebrates the principles of a **Circular Economy**—where growth, creativity, and responsibility flow together in harmony. This portal serves as the official countdown and information hub for the upcoming event.
 
@@ -12,7 +12,7 @@ The 2026 edition, themed **"Circle of Life"**, celebrates the principles of a **
 ## 🚀 Live Preview
 
 Check out the live countdown here:  
-**[SANKHYA 2026 Countdown](https://sankhya-timeline-8h2uk1rig-shreyits-projects.vercel.app/)**
+**[SANKHYA 2026 Countdown](https://sankhya-timeline.vercel.app/)**
 
 ---
 
@@ -57,9 +57,11 @@ Check out the live countdown here:
 ## 🛠️ Local Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/sankhya_cntdn.git
    ```
+
 2. **Open the project:**
    Simply open `index.html` in any modern web browser. No build steps or local server required!
 
