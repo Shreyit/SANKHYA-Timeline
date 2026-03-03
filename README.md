@@ -19,13 +19,15 @@ Check out the live countdown here:
 ## ✨ Features
 
 - **Interactive Modern UI:** A sleek, dark-themed interface with a "Circular Economy" aesthetic.
-- **Dynamic Countdown:** Real-time tracking of Days, Hours, Minutes, and Seconds until the event start (March 14, 2026).
+- **Digital Countdown:** Real-time countdown with flip animations on individual digit changes, featuring a LED-style display.
 - **Glassmorphism Effects:** Premium glass-card layout with backdrop blurs and rotating loop borders.
 - **Engaging Animations:**
+  - **Digit Flip:** Individual digit flip animation when numbers change (e.g., only the '5' flips from 55 to 56).
+  - **Falling Leaves:** Procedural SVG animation with natural wind movement representing nature and sustainability.
+  - **Smooth Scrolling:** Seamless scroll behavior for better UX.
   - **Fisheye Hover:** Modern bulge and glow effect on the main header.
-  - **Falling Leaves:** Procedural SVG animation representing nature and sustainability.
   - **Rotating Loop:** A central decorative element symbolizing the "Circle of Life".
-- **Responsive Design:** Optimized for all devices, from mobile phones to high-resolution desktops.
+- **Responsive Design:** Optimized for all devices.
 - **Custom Branding:** High-visibility integration of TISS and Sankhya official logos.
 
 ---
@@ -74,4 +76,4 @@ Check out the live countdown here:
 
 ---
 
-Developed with 💚 by **me as a part of SANKHYA 2026 Design Team.**
+Developed with 💚 by **me as a part of SANKHYA 2026 Design & Marketing Team.**
