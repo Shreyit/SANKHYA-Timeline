@@ -1,265 +1,234 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SANKHYA 2026 | Closing the Loop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Orbitron:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'eco-green': '#1A2F23',
-                        'eco-accent': '#4ade80',
-                        'eco-gold': '#C5A059',
-                        'eco-cream': '#F9F7F2',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        header: ['Montserrat', 'sans-serif'],
-                        digital: ['Orbitron', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #0D1A13; /* Deep Dark Green */
-            color: #F9F7F2;
-            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .glass-card {
-            background: rgba(26, 47, 35, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Rotating Loop Animation */
-        .loop-border::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                transparent, 
-                rgba(197, 160, 89, 0.4), 
-                #C5A059, 
-                rgba(74, 222, 128, 0.4), 
-                transparent 40%
-            );
-            animation: rotate 6s linear infinite;
-            z-index: -1;
-        }
-        .loop-border::after {
-            content: '';
-            position: absolute;
-            inset: 2px;
-            background: #1A2F23;
-            border-radius: 1rem;
-            z-index: -1;
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Leaf Animation */
-        .leaf {
-            position: fixed;
-            top: -10%;
-            user-select: none;
-            pointer-events: none;
-            z-index: 10;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
-
-        .digital-font {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.1em;
-            text-shadow: 0 0 15px rgba(197, 160, 89, 0.5);
-        }
-
-        .header-font {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .footer-link:hover {
-            text-shadow: 0 0 8px rgba(197, 160, 89, 0.6);
-        }
-
-        /* Fisheye / Bulge Effect */
-        .bulge-text {
-            display: inline-block;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), text-shadow 0.4s ease, filter 0.4s ease;
-        }
-        .bulge-text:hover {
-            transform: scale(1.1) translateY(-5px);
-            text-shadow: 0 0 30px rgba(74, 222, 128, 0.8), 0 0 50px rgba(197, 160, 89, 0.5);
-            filter: brightness(1.2);
-            z-index: 50;
-        }
-
-        .glass-bulge {
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .glass-bulge:hover {
-            transform: scale(1.05);
-            background: rgba(26, 47, 35, 0.8);
-            box-shadow: 0 0 40px rgba(197, 160, 89, 0.3);
-            border-color: rgba(197, 160, 89, 0.6);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankhya '27 — TISS Mumbai Cultural Fest</title>
+  <meta name="description" content="Sankhya is the annual cultural fest of the School of Analytics, TISS Mumbai. The 2027 edition is loading — schedule, events, competitions and registrations coming soon." />
+  <meta name="theme-color" content="#051204" />
+  <meta property="og:title" content="Sankhya '27 — TISS Mumbai" />
+  <meta property="og:description" content="Where culture meets the data. The 2027 edition is loading." />
+  <link rel="icon" href="/logo/sankhya-mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-off')}catch(e){}</script>
 </head>
-<body class="relative text-center">
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <!-- Hero Section -->
-    <header class="w-full flex flex-col items-center pt-2 px-4 md:pt-4 md:px-8 z-30">
-        <div class="w-full flex justify-between items-start">
-            <img src="img/TISS_logo.png" alt="TISS Logo" class="mt-4 md:mt-8 h-14 md:h-28 w-auto drop-shadow-xl">
-            <img src="img/Sankhya_white.svg" alt="Sankhya Logo" class="h-20 md:h-40 w-auto drop-shadow-xl">
+  <!-- Target-lock cursor (design-kit/CURSOR.md) -->
+  <div class="cursor-box" aria-hidden="true"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-label" aria-hidden="true"></div>
+
+  <!-- Top glyph field (Build.io / ShellGlyphs): page-wide shimmer behind hero, fades on scroll -->
+  <div class="field-layer" data-glyph-top aria-hidden="true">
+    <div class="field-haze" data-glyph-top-haze></div>
+    <canvas class="field-canvas" data-glyph-top-canvas></canvas>
+  </div>
+
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <div class="nav__pill nav__pill--brand glass">
+        <a class="nav__brand logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top">
+          <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
+          <span class="nav__sep" aria-hidden="true"></span>
+          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+        </a>
+      </div>
+      <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
+        <span class="pill-nav__ind" aria-hidden="true"></span>
+        <a class="pill-nav__link" href="#lineup" data-cursor="Jump to lineup">Lineup</a>
+        <a class="pill-nav__link" href="recap.html" data-cursor="Relive 2026">'26 Recap</a>
+        <a class="pill-nav__link" href="#sponsors" data-cursor="Jump to sponsors">Sponsors</a>
+        <a class="pill-nav__link" href="#contact" data-cursor="Reach the team">Contact</a>
+      </nav>
+      <div class="nav__pill nav__pill--cta glass">
+        <a class="btn btn--primary btn--sm" href="#register" data-register data-cursor="Opens soon">
+          <span>Register</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
+        </a>
+        <button class="nav__toggle" data-cursor="Menu" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="#lineup">Lineup</a>
+      <a href="recap.html">'26 Recap</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+      <a href="#register">Register</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__meta">
+          <p class="label" data-hero-label><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span>TISS Mumbai · School of Analytics</p>
         </div>
-        <div class="-mt-12 md:-mt-24 lg:-mt-32 relative z-10">
-            <h1 class="text-5xl md:text-8xl lg:text-9xl header-font font-extrabold tracking-tighter text-white mb-2 drop-shadow-2xl cursor-default select-none">
-                <span class="bulge-text">SANKHYA</span> <span class="text-eco-gold bulge-text">2026</span>
-            </h1>
-            <div class="digital-font text-xl md:text-3xl lg:text-4xl text-eco-accent tracking-[0.5em] mt-2 md:mt-4 opacity-80 cursor-default select-none drop-shadow-[0_0_10px_rgba(74,222,128,0.5)]">
-                COUNTDOWN
+
+        <h1 id="hero-title" class="hero__title logo-trigger" data-hero-media>
+          <span class="sr-only">Sankhya 2027 — the cultural fest of TISS Mumbai</span>
+          <span class="hero__logo logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+        </h1>
+
+        <div class="hero__foot">
+          <div class="hero__copy">
+            <p class="hero__lead" data-hero-sub><span class="line"><span>Culture, counted.</span></span><span class="line"><span>Where every stage is a <em class="em">data point</em>.</span></span></p>
+            <p class="hero__sub muted" data-hero-sub>The 2027 edition is loading. Three days of music, dance, film, fashion and ideas — dates, lineup and registrations drop soon.</p>
+          </div>
+          <div class="hero__cta" data-hero-cta>
+            <a class="btn btn--primary" href="#register" data-register data-cursor="Opens soon">
+              <span class="roll-inner" data-text="Register now">Register now</span>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
+            </a>
+            <a class="btn btn--ghost" href="recap.html" data-cursor="Relive 2026"><span>See Sankhya '26</span></a>
+          </div>
+        </div>
+
+        <dl class="hero__readout mono" data-hero-cta>
+          <div><dt>edition</dt><dd>2027</dd></div>
+          <div><dt>venue</dt><dd>TISS, Mumbai</dd></div>
+          <div><dt>window</dt><dd>Early 2027 · TBA</dd></div>
+          <div><dt>status</dt><dd><span class="dot dot--live"></span>loading</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── MARQUEE ──────────────────────────────────────────── -->
+    <div class="marquee" aria-hidden="true"><div class="marquee__track" data-marquee></div></div>
+
+    <!-- ── ABOUT ────────────────────────────────────────────── -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="about__statement" data-words>
+          Sankhya — Sanskrit for number — is the annual cultural fest of the School of Analytics, TISS Mumbai. A place where performance meets evidence, and every stage tells a story worth measuring.
+        </h2>
+        <div class="about__facts">
+          <div><span class="label">Organised by</span><p>School of Analytics</p></div>
+          <div><span class="label">Hosted at</span><p>Tata Institute of Social Sciences, Mumbai</p></div>
+          <div><span class="label">Format</span><p>Academic day + two days of culturals</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2027 LINEUP (coming soon) ────────────────────────── -->
+    <section class="section lineup" id="lineup" aria-labelledby="lineup-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="lineup-title" class="h2" data-reveal>The dataset is <em class="em">still loading.</em></h2>
+          <p class="muted section-head__sub" data-fade>Every module below goes live as it's locked. Check back soon, or follow <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">@tiss.sankhya</a> for drops.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card spot bento__schedule" id="schedule" data-fade>
+            <header class="card__head"><span class="mono muted">01 / schedule</span><span class="chip"><span class="dot dot--pulse"></span>Compiling</span></header>
+            <h3 class="h3">Schedule</h3>
+            <p class="muted">Three days, minute by minute.</p>
+            <div class="skel-days" aria-hidden="true">
+              <div><span class="mono">D01</span><i></i><i></i><i></i></div>
+              <div><span class="mono">D02</span><i></i><i></i><i></i><i></i></div>
+              <div><span class="mono">D03</span><i></i><i></i><i></i></div>
             </div>
-        </div>
-    </header>
+            <p class="card__eta mono">eta — coming soon</p>
+          </article>
 
-    <!-- Main Content -->
-    <main class="flex-grow w-full max-w-5xl px-6 flex flex-col items-center justify-center relative z-20">
-        <!-- Central Loop Decoration -->
-        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
-            <svg width="400" height="400" viewBox="0 0 100 100" class="w-64 h-64 md:w-[500px] md:h-[500px] animate-[spin_120s_linear_infinite]">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#C5A059" stroke-width="0.1" stroke-dasharray="2 2" />
-                <path d="M50 5 A45 45 0 0 1 95 50" fill="none" stroke="#4ade80" stroke-width="0.3" />
+          <article class="card spot bento__events" id="events" data-fade>
+            <header class="card__head"><span class="mono muted">02 / events</span><span class="chip"><span class="dot dot--pulse"></span>Curating</span></header>
+            <h3 class="h3">Events</h3>
+            <p class="muted">Stages, screenings, talks and the showdown.</p>
+            <div class="skel-bars" aria-hidden="true"><i style="--h:.35"></i><i style="--h:.6"></i><i style="--h:.45"></i><i style="--h:.85"></i><i style="--h:.55"></i><i style="--h:.7"></i><i style="--h:.4"></i><i style="--h:.95"></i></div>
+            <p class="card__eta mono">eta — coming soon</p>
+          </article>
+
+          <article class="card spot bento__comps" id="competitions" data-fade>
+            <header class="card__head"><span class="mono muted">03 / competitions</span><span class="chip"><span class="dot dot--pulse"></span>Drafting</span></header>
+            <h3 class="h3">Competitions</h3>
+            <p class="muted">Brackets, rules and prize pools.</p>
+            <svg class="skel-bracket" viewBox="0 0 240 96" aria-hidden="true">
+              <path d="M2 8h40v16H2M2 40h40V24M42 16h40v40h40M2 56h40v16H2M2 88h40V72M42 80h40V56" />
+              <circle cx="122" cy="56" r="4" />
             </svg>
+            <p class="card__eta mono">eta — coming soon</p>
+          </article>
+
+          <article class="card spot bento__sponsors" id="sponsors" data-fade>
+            <header class="card__head"><span class="mono muted">04 / sponsors</span><span class="chip"><span class="dot dot--pulse"></span>Onboarding</span></header>
+            <h3 class="h3">Sponsors</h3>
+            <p class="muted">The partners who make it happen. Slots are open.</p>
+            <div class="skel-logos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <a class="btn btn--ghost btn--sm" href="mailto:sankhya@tiss.ac.in?subject=Sponsoring%20Sankhya%20'27" data-cursor="Email sponsorship"><span>Partner with us</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg></a>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <!-- Countdown -->
-        <div id="countdown" class="grid grid-cols-4 gap-2 md:gap-8 w-full max-w-4xl px-2 md:px-4">
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
-                <span id="days" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
-                <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Days</span>
-            </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
-                <span id="hours" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
-                <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Hours</span>
-            </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
-                <span id="minutes" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-white">00</span>
-                <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Minutes</span>
-            </div>
-            <div class="glass-card loop-border glass-bulge rounded-xl p-3 md:p-8 flex flex-col items-center shadow-2xl cursor-default">
-                <span id="seconds" class="text-2xl md:text-6xl lg:text-7xl digital-font font-bold text-eco-gold">00</span>
-                <span class="text-[8px] md:text-xs uppercase tracking-widest text-eco-accent mt-2 md:mt-3">Seconds</span>
-            </div>
+    <!-- ── REGISTER CTA ─────────────────────────────────────── -->
+    <section class="section cta" id="register" aria-labelledby="register-title">
+      <div class="container">
+        <h2 id="register-title" class="display" data-reveal>Get <em class="em">counted.</em></h2>
+        <div class="cta__row">
+          <p class="muted cta__sub" data-fade>Registrations for Sankhya '27 open soon — participants, delegates and audience passes, all in one place.</p>
+          <a class="btn btn--primary btn--lg magnetic" href="#register" data-register data-cursor="Opens soon">
+            <span>Register now</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
+          </a>
         </div>
+        <p class="toast mono" role="status" aria-live="polite" data-toast></p>
+      </div>
+    </section>
 
-        <!-- About -->
-        <section class="mt-10 md:mt-14 max-w-3xl text-center px-6">
-            <h2 class="text-xl md:text-2xl header-font font-semibold mb-4 text-eco-gold uppercase tracking-[0.3em]">About the Event</h2>
-            <p class="text-sm md:text-lg text-eco-cream/70 leading-relaxed max-w-2xl mx-auto">
-                Sankhya is the annual cultural fest organised by the <strong>BS in Analytics and Sustainability Studies</strong> at <strong>Tata Institute of Social Sciences Mumbai</strong>. Rooted in the theme for this year <strong>“Circle of Life”</strong>, Sankhya celebrates the idea of a <strong>Circular Economy</strong>, where growth, creativity, and responsibility flow together in harmony.
-            </p>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="w-full py-6 bg-black/40 backdrop-blur-md border-t border-eco-gold/10 z-30">
-        <div class="max-w-5xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
-            <div class="text-center md:text-left">
-                <p class="text-2xl md:text-3xl font-extrabold text-white tracking-tighter">SANKHYA 2026</p>
-                <p class="text-eco-accent/60 uppercase tracking-widest text-xs">Starting from 13th March</p>
-            </div>
-            <div class="flex flex-col items-center md:items-end space-y-2 text-sm md:text-base">
-                <!-- Gmail -->
-                <a href="mailto:sankhya@tiss.ac.in" class="footer-link flex items-center gap-2 text-eco-cream/80 hover:text-eco-gold transition-all duration-300">
-                    <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    <span>sankhya@tiss.ac.in</span>
-                </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/tiss.sankhya?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="footer-link flex items-center gap-2 text-eco-cream/80 hover:text-eco-gold transition-all duration-300">
-                    <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <span>@tiss.sankhya</span>
-                </a>
-            </div>
+    <!-- ── CONTACT ──────────────────────────────────────────── -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container grid-12">
+        <div class="col-label">
+          <h2 id="contact-title" class="h2" data-reveal>Talk to the <em class="em">core.</em></h2>
+          <p class="muted" data-fade>Reach the right person on the core committee for your query.</p>
+          <div class="contact__general" data-fade>
+            <a class="icon-btn" href="mailto:sankhya@tiss.ac.in" data-cursor="sankhya@tiss.ac.in" aria-label="Email Sankhya"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="m2.5 4.5 5.5 4 5.5-4"/></svg></a>
+            <a class="icon-btn" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="@tiss.sankhya" aria-label="Instagram — @tiss.sankhya"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11" rx="3.2"/><circle cx="8" cy="8" r="2.6"/><circle cx="11.6" cy="4.4" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a class="icon-btn icon-btn--fill" href="https://www.linkedin.com/company/sankhyatissmumbai/" target="_blank" rel="noopener" data-cursor="LinkedIn" aria-label="LinkedIn — Sankhya TISS Mumbai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
         </div>
-    </footer>
+        <div class="col-body">
+          <ul class="committee" data-committee></ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script>
-        // Countdown Logic
-        const targetDate = new Date('March 14, 2026 00:00:00').getTime();
+  <footer class="footer" data-glyph-foot>
+    <!-- Bottom glyph field (landing footer): shimmer + cursor spotlight behind the mark -->
+    <div class="footer__glyphs" aria-hidden="true">
+      <div class="footer__haze" data-glyph-foot-haze></div>
+      <canvas class="footer__canvas" data-glyph-foot-canvas></canvas>
+    </div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="/img/TISS_logo.png" alt="Tata Institute of Social Sciences" width="40" height="44" />
+          <p class="muted">Sankhya — the annual cultural fest of the School of Analytics, Tata Institute of Social Sciences, Mumbai.</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer">
+          <a class="link" href="#lineup" data-cursor="Jump to lineup">Lineup</a>
+          <a class="link" href="recap.html" data-cursor="Relive 2026">'26 Recap</a>
+          <a class="link" href="#register" data-cursor="Opens soon">Register</a>
+          <a class="link" href="#contact" data-cursor="Reach the team">Contact</a>
+          <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">Instagram</a>
+        </nav>
+        <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
+      </div>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span></a>
+      <div class="footer__bottom mono muted">
+        <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
+        <span>n = ∞ stories</span>
+      </div>
+    </div>
+  </footer>
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = "<div class='col-span-4 text-3xl font-bold text-eco-accent'>THE EVENT HAS STARTED!</div>";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').innerText = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Falling Leaves Animation Logic
-        function createLeaf() {
-            const leaf = document.createElement('div');
-            leaf.className = 'leaf';
-            leaf.style.left = Math.random() * 100 + 'vw';
-            leaf.style.animationDuration = Math.random() * 5 + 5 + 's';
-            leaf.style.opacity = Math.random();
-            
-            // Random green/gold SVG leaves
-            const size = Math.random() * 20 + 10;
-            const color = Math.random() > 0.5 ? '#4ade80' : '#C5A059';
-            leaf.innerHTML = `
-                <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" style="opacity: 0.4">
-                    <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
-                </svg>
-            `;
-            
-            document.body.appendChild(leaf);
-            setTimeout(() => leaf.remove(), 10000);
-        }
-
-        setInterval(createLeaf, 300);
-    </script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

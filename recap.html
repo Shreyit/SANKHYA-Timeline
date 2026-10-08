@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sankhya '26 Recap — Circle of Life | TISS Mumbai</title>
+  <meta name="description" content="Relive Sankhya '26 — Circle of Life, the annual cultural fest of the School of Analytics, TISS Mumbai. Stats, schedules, events and achievements from the archive." />
+  <meta name="theme-color" content="#051204" />
+  <meta property="og:title" content="Sankhya '26 — Circle of Life" />
+  <meta property="og:description" content="The 2026 archive: three days, nine competitions, one circle of life." />
+  <link rel="icon" href="/logo/sankhya-mark.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-off')}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Target-lock cursor (design-kit/CURSOR.md) -->
+  <div class="cursor-box" aria-hidden="true"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-label" aria-hidden="true"></div>
+
+  <!-- Top glyph field: page-wide shimmer, fades on scroll -->
+  <div class="field-layer" data-glyph-top aria-hidden="true">
+    <div class="field-haze" data-glyph-top-haze></div>
+    <canvas class="field-canvas" data-glyph-top-canvas></canvas>
+  </div>
+
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <div class="nav__pill nav__pill--brand glass">
+        <a class="nav__brand logo-trigger" href="index.html" data-cursor="Back home" aria-label="Sankhya '27 — back home">
+          <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
+          <span class="nav__sep" aria-hidden="true"></span>
+          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+        </a>
+      </div>
+      <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
+        <span class="pill-nav__ind" aria-hidden="true"></span>
+        <a class="pill-nav__link" href="index.html" data-cursor="Back home">Home</a>
+        <a class="pill-nav__link" href="#recap" data-cursor="Relive 2026" aria-current="true">Archive</a>
+        <a class="pill-nav__link" href="index.html#contact" data-cursor="Reach the team">Contact</a>
+      </nav>
+      <div class="nav__pill nav__pill--cta glass">
+        <a class="btn btn--primary btn--sm" href="index.html#register" data-register data-cursor="Opens soon">
+          <span>Register</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
+        </a>
+        <button class="nav__toggle" data-cursor="Menu" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Mobile">
+      <a href="index.html">Home</a>
+      <a href="#recap">'26 Recap</a>
+      <a href="index.html#register">Register</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- ── 2026 RECAP (green / sustainable theme) ───────────── -->
+    <section class="section recap" id="recap" data-theme="recap" aria-labelledby="recap-title" style="padding-top: calc(var(--section-y) + 40px)">
+      <div class="recap__glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="recap__head">
+          <p><a class="link" href="index.html" data-cursor="Back home">← Sankhya '27</a></p>
+          <span class="mark26-trigger wordmark26" role="img" aria-label="Sankhya 2026" data-cursor="Sankhya '26"><span class="mark26" aria-hidden="true"></span><span class="wordmark26__rest" aria-hidden="true">ANKHYA</span></span>
+          <h2 id="recap-title" class="h1" data-reveal>Circle <em class="em">of</em> Life</h2>
+          <p class="recap__quote" data-fade></p>
+          <p class="mono muted" data-fade data-recap-dates></p>
+        </div>
+
+        <div class="stats" data-stats></div>
+
+        <div class="recap__block">
+          <div class="recap__block-head">
+            <h3 class="h3">The three days</h3>
+            <div class="tabs" role="tablist" aria-label="Sankhya '26 days" data-tabs>
+              <span class="tabs__ind" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="days" data-days></div>
+        </div>
+
+        <div class="recap__block">
+          <div class="recap__block-head">
+            <h3 class="h3">Event snippets</h3>
+            <div class="filters" role="group" aria-label="Filter events" data-filters></div>
+          </div>
+          <div class="events" data-events></div>
+        </div>
+
+        <div class="recap__block achievements">
+          <div class="recap__block-head">
+            <h3 class="h3">Achievements</h3>
+            <p class="muted">Winners, standouts and the numbers behind them — being archived.</p>
+          </div>
+          <div class="ach" data-ach></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BACK TO '27 ───────────────────────────────────────── -->
+    <section class="section cta" aria-labelledby="back-title">
+      <div class="container">
+        <h2 id="back-title" class="display" data-reveal>Back to <em class="em">'27.</em></h2>
+        <div class="cta__row">
+          <p class="muted cta__sub" data-fade>The 2027 edition is loading — lineup, dates and registrations drop soon.</p>
+          <a class="btn btn--primary btn--lg magnetic" href="index.html" data-cursor="Back home">
+            <span>Sankhya '27</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-glyph-foot>
+    <!-- Bottom glyph field: shimmer + cursor spotlight behind the mark -->
+    <div class="footer__glyphs" aria-hidden="true">
+      <div class="footer__haze" data-glyph-foot-haze></div>
+      <canvas class="footer__canvas" data-glyph-foot-canvas></canvas>
+    </div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="/img/TISS_logo.png" alt="Tata Institute of Social Sciences" width="40" height="44" />
+          <p class="muted">Sankhya — the annual cultural fest of the School of Analytics, Tata Institute of Social Sciences, Mumbai.</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer">
+          <a class="link" href="index.html" data-cursor="Back home">Home</a>
+          <a class="link" href="index.html#register" data-cursor="Opens soon">Register</a>
+          <a class="link" href="index.html#contact" data-cursor="Reach the team">Contact</a>
+          <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">Instagram</a>
+        </nav>
+        <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
+      </div>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span></a>
+      <div class="footer__bottom mono muted">
+        <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
+        <span>n = ∞ stories</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
