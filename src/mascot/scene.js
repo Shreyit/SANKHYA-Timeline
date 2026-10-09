@@ -1,6 +1,6 @@
 // Sanku — the Sankhya '27 mascot, built procedurally in three.js (no model
-// file to download). A sand-coloured bean with the logo's green slit eyes, a
-// two-leaf sprout and a little mint planet in orbit.
+// file to download). A marigold bean with indigo eyes, a crimson sprout
+// and a small indigo ornament in orbit.
 //
 // API: createSanku(canvas, { reduce }) → { lookAt(x, y), react(mood), hop(),
 //      squash(), setActive(bool), dispose() }
@@ -8,9 +8,9 @@ import * as THREE from 'three';
 import { gsap } from '../core/gsap.js';
 
 const C = {
-  body: 0xE2C98F, belly: 0xF2E4C2, socket: 0x0B1A0A, iris: 0x4ADE6B, pupil: 0x06120A,
-  leaf: 0x4ADE6B, leafDeep: 0x22A84A, stem: 0x2F9E4F, planet: 0x9BF0B4, ring: 0x9BF0B4,
-  cheek: 0xF0A27A,
+  body: 0xFFD129, belly: 0xF4E7C3, socket: 0x25152E, iris: 0x3B1CF4, pupil: 0x0B0B0B,
+  leaf: 0xE61E25, leafDeep: 0x8B0F14, stem: 0x8B0F14, planet: 0x3B1CF4, ring: 0xF4E7C3,
+  cheek: 0xE61E25,
 };
 
 export function createSanku(canvas, { reduce = false } = {}) {
@@ -25,10 +25,10 @@ export function createSanku(canvas, { reduce = false } = {}) {
   camera.position.set(0, 0.35, 7.4);
   camera.lookAt(0, 0.25, 0);
 
-  // ── light: warm key, forest-green ground bounce, mint rim from behind
-  scene.add(new THREE.HemisphereLight(0xFFF3D6, 0x0E260A, 1.15));
+  // ── light: warm key, maroon ground bounce, indigo rim
+  scene.add(new THREE.HemisphereLight(0xFFF3D6, 0x431519, 1.15));
   const key = new THREE.DirectionalLight(0xFFE7B8, 2.1); key.position.set(-3, 4, 5); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x7EE7A0, 2.4); rim.position.set(3, 2, -4); scene.add(rim);
+  const rim = new THREE.DirectionalLight(0x8673FF, 2.4); rim.position.set(3, 2, -4); scene.add(rim);
 
   const mat = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.55, metalness: 0, ...o });
 

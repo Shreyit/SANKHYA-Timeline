@@ -5,16 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sankhya '26 Recap — Circle of Life | TISS Mumbai</title>
   <meta name="description" content="Relive Sankhya '26 — Circle of Life, the annual cultural fest of the School of Analytics, TISS Mumbai. Stats, schedules, events and achievements from the archive." />
-  <meta name="theme-color" content="#051204" />
+  <meta name="theme-color" content="#F4E7C3" />
   <meta property="og:title" content="Sankhya '26 — Circle of Life" />
   <meta property="og:description" content="The 2026 archive: three days, nine competitions, one circle of life." />
-  <link rel="icon" href="/logo/sankhya-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/logo/sankhya-popart-mark.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-off')}catch(e){}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet" />
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) document.documentElement.classList.add('motion-off');
+      const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-smoke') || 'null');
+      sessionStorage.removeItem('sankhya-page-smoke');
+      if (!reduce && handoff?.to === location.pathname && Date.now() - handoff.at < 8000) {
+        document.documentElement.classList.add('smoke-entering');
+        // The curtain must never stay up if the module fails to load.
+        setTimeout(() => document.documentElement.classList.remove('smoke-entering'), 1600);
+      }
+    } catch { /* normal page loading without storage */ }
+  </script>
 </head>
 <body>
+  <div class="page-smoke" aria-hidden="true">
+    <div class="page-smoke__veil"></div>
+    <div class="page-smoke__plume page-smoke__plume--far"></div>
+    <div class="page-smoke__plume page-smoke__plume--near"></div>
+  </div>
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- Target-lock cursor (design-kit/CURSOR.md) -->
@@ -22,19 +40,13 @@
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-label" aria-hidden="true"></div>
 
-  <!-- Top glyph field: page-wide shimmer, fades on scroll -->
-  <div class="field-layer" data-glyph-top aria-hidden="true">
-    <div class="field-haze" data-glyph-top-haze></div>
-    <canvas class="field-canvas" data-glyph-top-canvas></canvas>
-  </div>
-
   <header class="nav" data-nav>
     <div class="nav__inner">
       <div class="nav__pill nav__pill--brand glass">
         <a class="nav__brand logo-trigger" href="index.html" data-cursor="Back home" aria-label="Sankhya '27 — back home">
           <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
           <span class="nav__sep" aria-hidden="true"></span>
-          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
         </a>
       </div>
       <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
@@ -62,7 +74,7 @@
   </div>
 
   <main id="main">
-    <!-- ── 2026 RECAP (green / sustainable theme) ───────────── -->
+    <!-- ── 2026 ARCHIVE ───────────────────────────────────── -->
     <section class="section recap" id="recap" data-theme="recap" aria-labelledby="recap-title" style="padding-top: calc(var(--section-y) + 40px)">
       <div class="recap__glow" aria-hidden="true"></div>
       <div class="container">
@@ -118,11 +130,9 @@
     </section>
   </main>
 
-  <footer class="footer" data-glyph-foot>
-    <!-- Bottom glyph field: shimmer + cursor spotlight behind the mark -->
-    <div class="footer__glyphs" aria-hidden="true">
-      <div class="footer__haze" data-glyph-foot-haze></div>
-      <canvas class="footer__canvas" data-glyph-foot-canvas></canvas>
+  <footer class="footer" data-motif-foot>
+    <div class="footer__motifs" aria-hidden="true">
+      <canvas class="footer__canvas" data-motif-foot-canvas></canvas>
     </div>
     <div class="container">
       <div class="footer__top">
@@ -138,10 +148,10 @@
         </nav>
         <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
       </div>
-      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span></a>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span></a>
       <div class="footer__bottom mono muted">
         <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
-        <span>n = ∞ stories</span>
+        <span>Many roots. One Sankhya.</span>
       </div>
     </div>
   </footer>

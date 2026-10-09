@@ -21,6 +21,16 @@ export const marquee = [
   'Policy Hackathon', 'Treasure Hunt', 'Data Conference', 'Musical Night',
 ];
 
+// A cultural invitation, rather than an announced programme or lineup.
+export const culture = [
+  { label: 'Dance & rhythm', title: 'Many roots.\nNew rhythms.', motif: 3,
+    text: 'Classical grace, folk energy and a beat that belongs to you. Bring your own way of moving.' },
+  { label: 'Art & expression', title: 'Old traditions.\nFresh imagination.', motif: 2,
+    text: 'From handmade details to bold new frames. Make, perform and reimagine what culture can look like.' },
+  { label: 'Voices & ideas', title: 'Every voice.\nA place here.', motif: 5,
+    text: 'Different languages, lived experiences and ways of seeing. One campus, open to all of them.' },
+];
+
 // ── Sankhya 2026 recap ──────────────────────────────────────────────────
 // Add `photo: '/img/recap/greenscreen.jpg'` to any event to replace its placeholder,
 // and `result: '1st — Team Name'` to show achievements.

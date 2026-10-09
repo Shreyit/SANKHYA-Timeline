@@ -1,7 +1,8 @@
 // Renders data-driven blocks (stats, days, events, committee…) from data.js.
 import { gsap, ScrollTrigger, SplitText } from '../core/gsap.js';
 import { $, $$, reduce, finePointer, esc, pad2 } from '../core/env.js';
-import { fest, marquee, recap, committee } from '../data.js';
+import { fest, marquee, recap, committee, culture } from '../data.js';
+import { motifSvg } from '../brand/motifs.js';
 
 /* ── Render content from data.js ───────────────────────
    Every block is guarded: index.html and recap.html share this bundle but
@@ -12,9 +13,17 @@ export function render() {
 
   const mq = $('[data-marquee]');
   if (mq) {
-    const group = marquee.map((m) => `<span class="marquee__item">${esc(m)}</span><span class="marquee__sep"></span>`).join('');
+    const group = marquee.map((m) => `<span class="marquee__item">${esc(m)}</span>${motifSvg(4, 'marquee__sep')}`).join('');
     mq.innerHTML = `<div class="marquee__group">${group}</div><div class="marquee__group">${group}</div>`;
   }
+
+  const cultureEl = $('[data-culture]');
+  if (cultureEl) cultureEl.innerHTML = culture.map((item, i) => `
+    <article class="culture-card" data-fade>
+      <div class="culture-card__top"><span class="label">${pad2(i + 1)} / ${esc(item.label)}</span>${motifSvg(item.motif, 'culture-card__motif')}</div>
+      <h3>${esc(item.title).replace('\n', '<br>')}</h3>
+      <p>${esc(item.text)}</p>
+    </article>`).join('');
 
   const quote = $('.recap__quote');
   if (quote) quote.textContent = `“${recap.quote}”`;

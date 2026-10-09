@@ -2,20 +2,21 @@
 //   core/      env helpers · GSAP registration · Lenis smooth scroll · section tracker
 //   motion/    scroll choreography (GSAP + ScrollTrigger + SplitText)
 //   features/  data rendering · nav · pointer layer (cursor, spotlight, magnetic) · recap
-//   brand/     the '27 logo (layered SVG + hover motion) and its liquid-glass parts
-//   fx/        glyph fields, hover helpers
+//   brand/     pop-art vector wordmark and shared folk-inspired motifs
+//   fx/        pointer-revealed motif fields and hover helpers
 //   rive/      Rive vector animations (loaded only if a page has [data-rive])
 //   mascot/    Sanku, the floating three.js guide (loaded when the browser is idle)
 import './style.css';
 import { reduce } from './core/env.js';
 import { initScroll } from './core/scroll.js';
 import { initMotion } from './motion/scroll-animations.js';
+import { initPageTransitions } from './motion/page-transitions.js';
 import { render } from './features/render.js';
 import { initNav, initPillNav, initAnchors, initNavState } from './features/nav.js';
 import { initSurfaces, initCursor, initMagnetic } from './features/pointer.js';
 import { initTabs, initOdometers } from './features/recap.js';
 import { mountLogos } from './brand/logo.js';
-import { initGlyphFields } from './fx/glyph-fields.js';
+import { initMotifFields } from './fx/motif-fields.js';
 import { initRive } from './rive/rive.js';
 import { initMascot } from './mascot/index.js';
 
@@ -25,6 +26,7 @@ import { initMascot } from './mascot/index.js';
 render();
 mountLogos({ reduce });
 initScroll();
+initPageTransitions();
 initNavState();
 initAnchors();
 initNav();
@@ -34,6 +36,6 @@ initCursor();
 initMagnetic();
 initTabs();
 initOdometers();
-initGlyphFields();
+initMotifFields();
 initRive();
 document.fonts.ready.then(() => { initMotion(); initMascot(); });

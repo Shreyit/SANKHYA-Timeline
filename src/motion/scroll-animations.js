@@ -66,7 +66,7 @@ export function initMotion() {
     });
   }
 
-  // Recap: slow drift of the gold glow (recap page only)
+  // Recap: slow drift of the soft ink wash (recap page only)
   if ($('.recap__glow')) gsap.fromTo('.recap__glow', { yPercent: -10 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '#recap', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   // Footer mark: slides in from the left like a car crossing the line

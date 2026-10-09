@@ -5,16 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sankhya '27 — TISS Mumbai Cultural Fest</title>
   <meta name="description" content="Sankhya is the annual cultural fest of the School of Analytics, TISS Mumbai. The 2027 edition is loading — schedule, events, competitions and registrations coming soon." />
-  <meta name="theme-color" content="#051204" />
+  <meta name="theme-color" content="#E61E25" />
   <meta property="og:title" content="Sankhya '27 — TISS Mumbai" />
   <meta property="og:description" content="Where culture meets the data. The 2027 edition is loading." />
-  <link rel="icon" href="/logo/sankhya-mark.svg" type="image/svg+xml" />
+  <link rel="icon" href="/logo/sankhya-popart-mark.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <script>document.documentElement.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-off')}catch(e){}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet" />
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) document.documentElement.classList.add('motion-off');
+      const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-smoke') || 'null');
+      sessionStorage.removeItem('sankhya-page-smoke');
+      if (!reduce && handoff?.to === location.pathname && Date.now() - handoff.at < 8000) {
+        document.documentElement.classList.add('smoke-entering');
+        // The curtain must never stay up if the module fails to load.
+        setTimeout(() => document.documentElement.classList.remove('smoke-entering'), 1600);
+      }
+    } catch { /* normal page loading without storage */ }
+  </script>
 </head>
 <body>
+  <div class="page-smoke" aria-hidden="true">
+    <div class="page-smoke__veil"></div>
+    <div class="page-smoke__plume page-smoke__plume--far"></div>
+    <div class="page-smoke__plume page-smoke__plume--near"></div>
+  </div>
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- Target-lock cursor (design-kit/CURSOR.md) -->
@@ -22,19 +40,13 @@
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-label" aria-hidden="true"></div>
 
-  <!-- Top glyph field (Build.io / ShellGlyphs): page-wide shimmer behind hero, fades on scroll -->
-  <div class="field-layer" data-glyph-top aria-hidden="true">
-    <div class="field-haze" data-glyph-top-haze></div>
-    <canvas class="field-canvas" data-glyph-top-canvas></canvas>
-  </div>
-
   <header class="nav" data-nav>
     <div class="nav__inner">
       <div class="nav__pill nav__pill--brand glass">
         <a class="nav__brand logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top">
           <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
           <span class="nav__sep" aria-hidden="true"></span>
-          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
         </a>
       </div>
       <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
@@ -66,24 +78,28 @@
   <main id="main">
     <!-- ── HERO ─────────────────────────────────────────────── -->
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="field-layer" aria-hidden="true"><canvas class="field-canvas" data-motif-top-canvas></canvas></div>
       <div class="container">
         <div class="hero__meta">
-          <p class="label" data-hero-label><span class="stripes" aria-hidden="true"><i></i><i></i><i></i></span>TISS Mumbai · School of Analytics</p>
+          <p class="label" data-hero-label>TISS Mumbai · School of Analytics</p>
+          <p class="hero__edition label" data-hero-label>A cultural confluence / 2027</p>
         </div>
 
         <h1 id="hero-title" class="hero__title logo-trigger" data-hero-media>
           <span class="sr-only">Sankhya 2027 — the cultural fest of TISS Mumbai</span>
-          <span class="hero__logo logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="hero__logo logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
         </h1>
+
+        <div class="hero__ornament" aria-hidden="true"><span></span><svg viewBox="0 0 100 100"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z"/></svg><span></span></div>
 
         <div class="hero__foot">
           <div class="hero__copy">
-            <p class="hero__lead" data-hero-sub><span class="line"><span>Culture, counted.</span></span><span class="line"><span>Where every stage is a <em class="em">data point</em>.</span></span></p>
-            <p class="hero__sub muted" data-hero-sub>The 2027 edition is loading. Three days of music, dance, film, fashion and ideas — dates, lineup and registrations drop soon.</p>
+            <p class="hero__lead" data-hero-sub><span class="line"><span>Many cultures.</span></span><span class="line"><span>One <em class="em">unforgettable stage.</em></span></span></p>
+            <p class="hero__sub muted" data-hero-sub>Music, movement, stories and ideas. A celebration of everything we bring together — at TISS, Mumbai.</p>
           </div>
           <div class="hero__cta" data-hero-cta>
             <a class="btn btn--primary" href="#register" data-register data-cursor="Opens soon">
-              <span class="roll-inner" data-text="Register now">Register now</span>
+              <span>Be part of '27</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
             </a>
             <a class="btn btn--ghost" href="recap.html" data-cursor="Relive 2026"><span>See Sankhya '26</span></a>
@@ -94,7 +110,7 @@
           <div><dt>edition</dt><dd>2027</dd></div>
           <div><dt>venue</dt><dd>TISS, Mumbai</dd></div>
           <div><dt>window</dt><dd>Early 2027 · TBA</dd></div>
-          <div><dt>status</dt><dd><span class="dot dot--live"></span>loading</dd></div>
+          <div><dt>status</dt><dd><span class="dot dot--live"></span>Coming together</dd></div>
         </dl>
       </div>
     </section>
@@ -105,8 +121,9 @@
     <!-- ── ABOUT ────────────────────────────────────────────── -->
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container">
+        <p class="section-kicker label" data-fade>Rooted in culture. Open to everyone.</p>
         <h2 id="about-title" class="about__statement" data-words>
-          Sankhya — Sanskrit for number — is the annual cultural fest of the School of Analytics, TISS Mumbai. A place where performance meets evidence, and every stage tells a story worth measuring.
+          A little folk. A little future. A whole lot of us. Sankhya brings India's many expressions together — through music, movement, art and ideas. Rooted in the School of Analytics, TISS Mumbai. Made for every story you bring.
         </h2>
         <div class="about__facts">
           <div><span class="label">Organised by</span><p>School of Analytics</p></div>
@@ -116,12 +133,22 @@
       </div>
     </section>
 
+    <section class="section culture" id="culture" aria-labelledby="culture-title">
+      <div class="container">
+        <div class="section-head">
+          <div><p class="section-kicker label" data-fade>The spirit of Sankhya</p><h2 id="culture-title" class="h2" data-reveal>A thousand expressions.<br><em class="em">One shared stage.</em></h2></div>
+          <p class="muted section-head__sub" data-fade>Across traditions, languages and generations. Come as you are. Add your colour.</p>
+        </div>
+        <div class="culture-grid" data-culture></div>
+      </div>
+    </section>
+
     <!-- ── 2027 LINEUP (coming soon) ────────────────────────── -->
     <section class="section lineup" id="lineup" aria-labelledby="lineup-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="lineup-title" class="h2" data-reveal>The dataset is <em class="em">still loading.</em></h2>
-          <p class="muted section-head__sub" data-fade>Every module below goes live as it's locked. Check back soon, or follow <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">@tiss.sankhya</a> for drops.</p>
+          <div><p class="section-kicker label" data-fade>The next chapter / 2027</p><h2 id="lineup-title" class="h2" data-reveal>Something colourful<br>is <em class="em">coming together.</em></h2></div>
+          <p class="muted section-head__sub" data-fade>The stages are taking shape. Dates, events and the full lineup drop soon. Follow <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">@tiss.sankhya</a> for the first look.</p>
         </div>
 
         <div class="bento">
@@ -200,11 +227,9 @@
     </section>
   </main>
 
-  <footer class="footer" data-glyph-foot>
-    <!-- Bottom glyph field (landing footer): shimmer + cursor spotlight behind the mark -->
-    <div class="footer__glyphs" aria-hidden="true">
-      <div class="footer__haze" data-glyph-foot-haze></div>
-      <canvas class="footer__canvas" data-glyph-foot-canvas></canvas>
+  <footer class="footer" data-motif-foot>
+    <div class="footer__motifs" aria-hidden="true">
+      <canvas class="footer__canvas" data-motif-foot-canvas></canvas>
     </div>
     <div class="container">
       <div class="footer__top">
@@ -221,10 +246,10 @@
         </nav>
         <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
       </div>
-      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya27.svg" alt="Sankhya" draggable="false" /></span></a>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span></a>
       <div class="footer__bottom mono muted">
         <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
-        <span>n = ∞ stories</span>
+        <span>Many roots. One Sankhya.</span>
       </div>
     </div>
   </footer>

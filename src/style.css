@@ -1,50 +1,36 @@
-/* Sankhya '27 — "Forest & Champagne" theme. Surfaces come from the brand
-   palette (#070000 · #071906 · #12300D · #133F0F · #144914); text is a warm
-   ivory; ONE champagne-gold accent, used sparingly. Structure follows
-   design-kit/08 (Geist, inset highlights, deep shadows). The 2026 recap
-   re-maps the accent to mint via [data-theme="recap"]. */
+/* Sankhya — Indian pop-art. Strong poster colour and folk ornament,
+   balanced with clear grids, legible type and quiet information surfaces. */
 
 :root {
-  color-scheme: dark; /* dark canvas between page loads — no white flash */
-  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-
+  color-scheme: dark;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-mono: var(--font-body);
   --fs-2xs: 12px; --fs-xs: 13px; --fs-sm: 14px; --fs-base: 16px; --fs-lg: 18px;
   --fs-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.75rem);
   --fs-h2: clamp(2rem, 1.5rem + 2.2vw, 3.5rem);
   --fs-h1: clamp(2.75rem, 1.6rem + 5vw, 6.5rem);
   --fs-display: clamp(3.5rem, 1.6rem + 9vw, 11rem);
-  --fs-statement: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
+  --fs-statement: clamp(1.7rem, 1.1rem + 2.2vw, 3.3rem);
 
-  /* brand palette, darkest → lightest */
-  --p-0: #070000; --p-1: #071906; --p-2: #12300D; --p-3: #133F0F; --p-4: #144914;
-  --c-bg: #051204;          /* page — a step darker than p-1 */
-  --c-bg-2: #040C03;        /* alternate sections, between p-0 and the page */
-  --c-surface: #091C07;     /* cards, between p-1 and p-2 */
-  --c-surface-muted: rgba(20,73,20,0.22);   /* p-4 wash */
-  --c-ink: #E3D3AE;         /* sand */
-  --c-ink-strong: #F2E4C2;  /* light sand — headings */
-  --c-muted: #A9A487;       /* dusty sand-sage — 7:1 on --c-bg */
-  --c-nardo: var(--p-3);
-  --c-line: rgba(226,201,143,0.11);
-  --c-line-strong: rgba(226,201,143,0.22);
-  --c-accent: #D9BD7A;      /* champagne gold */
-  --accent-rgb: 217, 189, 122;
-  --c-accent-ink: #1A1404;
-  /* logo: sand wordmark, green elements */
-  --c-logo: #E2C98F;  --logo-rgb: 226, 201, 143;
-  --c-leaf: #4ADE6B;  --leaf-rgb: 74, 222, 107;    /* sprout + eye */
-  --comet-rgb: 74, 222, 107;                        /* trail + head planet = leaf green */
-  --c-planet-2: #9BF0B4; --planet2-rgb: 155, 240, 180;   /* mint */
-  --c-planet-3: #22A84A; --planet3-rgb: 34, 168, 74;     /* deep green */
-
-  /* Same three-shade ramp the glyph field (design-kit `animation.md`'s
-     shimmering-field recipe) reads — main/light/deep, derived from the
-     accent at the same ratios as AakaarIO's own theme generator (55%
-     accent + 45% white for light; 82% accent + 18% black for deep). */
-  --c-main: var(--c-accent);
-  --c-light: color-mix(in srgb, var(--c-accent) 55%, white);
-  --c-deep: color-mix(in srgb, var(--c-accent) 82%, black);
+  --p-red: #E61E25; --p-yellow: #FFD129; --p-indigo: #3B1CF4;
+  --p-black: #0B0B0B; --p-sand: #F4E7C3; --p-maroon: #8B0F14;
+  --c-poster: #C91A23; /* slightly deeper crimson for small cream text */
+  --p-green: #236942; --p-green-dark: #1B4D32;
+  --c-smoke: #101813;
+  --p-0: var(--p-black); --p-1: var(--p-maroon); --p-2: #431519;
+  --p-3: var(--p-indigo); --p-4: var(--p-red);
+  --c-bg: var(--p-black); --c-bg-2: #141012;
+  --c-surface: #20181B; --c-surface-muted: rgba(244,231,195,.055);
+  --c-ink: var(--p-sand); --c-ink-strong: #FFF3D5; --c-muted: #C7B69C;
+  --c-line: rgba(244,231,195,.15); --c-line-strong: rgba(244,231,195,.32);
+  --c-accent: var(--p-yellow); --accent-rgb: 255,209,41; --c-accent-ink: var(--p-black);
+  --c-logo: var(--p-yellow); --logo-rgb: 255,209,41;
+  --c-main: var(--p-yellow); --c-light: var(--p-sand); --c-deep: var(--p-maroon);
+  --c-leaf: var(--p-red); --c-nardo: var(--p-indigo);
+  --grain: url('/patterns/print-grain.svg');
+  --ornament: url('/patterns/rangoli.svg');
+  --folk-border: url('/patterns/folk-border.svg');
 
   --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px;
   --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px; --space-10: 128px;
@@ -62,24 +48,25 @@
   --dur-instant: 150ms; --dur-fast: 200ms; --dur-base: 300ms; --dur-slow: 350ms; --dur-slower: 600ms;
 }
 
-/* 2026 archive: warm gold re-map of the same tokens (stays distinct now
-   that the main accent is ember orange) */
+/* Warm paper makes the archive readable while keeping the new brand. */
+[data-theme="recap"], .about, .culture {
+  color-scheme: light;
+  --c-bg: var(--p-sand); --c-bg-2: #EEDDB6;
+  --c-surface: #FAEED0; --c-surface-muted: rgba(139,15,20,.045);
+  --c-ink: #34221F; --c-ink-strong: var(--p-maroon); --c-muted: #685047;
+  --c-line: rgba(139,15,20,.18); --c-line-strong: rgba(139,15,20,.4);
+  --c-accent: var(--p-indigo); --accent-rgb: 59,28,244; --c-accent-ink: var(--p-sand);
+  --c-main: var(--p-indigo); --c-light: var(--p-sand); --c-deep: var(--p-maroon);
+}
+
+/* Circle of Life: forest green against the archive's warm paper. */
 [data-theme="recap"] {
-  --c-bg: var(--p-0);
-  --c-bg-2: #040A03;
-  --c-surface: #0A1C08;
-  --c-surface-muted: rgba(126,231,160,0.05);
-  --c-ink: #E4EEE2;
-  --c-ink-strong: #F3FAF1;
-  --c-muted: #99AE97;
-  --c-line: rgba(160,230,170,0.11);
-  --c-line-strong: rgba(160,230,170,0.22);
-  --c-accent: #7EE7A0;
-  --accent-rgb: 126, 231, 160;
-  --c-accent-ink: #04140A;
-  --c-main: var(--c-accent);
-  --c-light: color-mix(in srgb, var(--c-accent) 55%, white);
-  --c-deep: color-mix(in srgb, var(--c-accent) 82%, black);
+  --c-surface: #F0EAD3; --c-surface-muted: rgba(35,105,66,.055);
+  --c-ink: #253A2A; --c-ink-strong: var(--p-green-dark); --c-muted: #53634B;
+  --c-line: rgba(35,105,66,.18); --c-line-strong: rgba(35,105,66,.4);
+  --c-accent: var(--p-green); --accent-rgb: 35,105,66;
+  --c-main: var(--p-green); --c-deep: var(--p-green-dark);
+  --focus-ring: 0 0 0 2px var(--p-sand), 0 0 0 4px var(--p-green);
 }
 
 /* ── Base ─────────────────────────────────────────────── */
@@ -88,8 +75,6 @@ html { -webkit-text-size-adjust: 100%; }
 html.lenis, html.lenis body { height: auto; }
 body {
   margin: 0;
-  background-image: radial-gradient(120% 70% at 50% 0%, #0E260A 0%, transparent 60%), linear-gradient(180deg, #051204, var(--p-0));
-  background-attachment: fixed;
   background: var(--c-bg);
   color: var(--c-ink);
   font: 400 var(--fs-base)/1.5 var(--font-body);
@@ -122,7 +107,7 @@ p { text-wrap: pretty; }
 
 .mono { font-family: var(--font-mono); letter-spacing: 0.02em; }
 .muted { color: var(--c-muted); }
-.em { display: inline-block; font-style: normal; font-weight: 600; color: var(--c-accent); transform: skewX(-12deg); letter-spacing: -0.035em; }
+.em { font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--c-accent); letter-spacing: -0.035em; }
 .label { display: inline-flex; align-items: center; gap: var(--space-2); font: 500 var(--fs-xs)/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); }
 .h1 { font-size: var(--fs-h1); line-height: 0.95; letter-spacing: -0.045em; }
 .h2 { font-size: var(--fs-h2); line-height: 1; letter-spacing: -0.04em; }
@@ -138,8 +123,8 @@ p { text-wrap: pretty; }
 
 /* grain */
 body::after {
-  content: ''; position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: .045;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  content: ''; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .055;
+  background-image: var(--grain);
 }
 
 /* ── Links & buttons ──────────────────────────────────── */
@@ -193,34 +178,11 @@ body::after {
 /* Cursor colours read one pair of variables (design-kit/CURSOR.md); the
    recap swaps them to green while it's in view. */
 :root { --cursor-accent: var(--c-accent); --cursor-ink: var(--c-accent-ink); --cursor-z: 9999; }
-body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
+body.in-recap { --cursor-accent: var(--p-green); --cursor-ink: var(--p-sand); }
 
-/* ── Glyph field (design-kit/animation.md's "shimmering field" recipe,
-   ported exactly from AakaarIO's hooks/useGlyphField.js) ─────────────
-   A page-wide layer behind everything: monospace glyphs that shimmer and
-   light up in a cursor-following spotlight. Fixed to the viewport, so it
-   sits under the nav and hero the same way regardless of scroll; a single
-   top-to-bottom mask fades it out by mid-page (--top-a is set from JS on
-   scroll — see src/glyphField.js). */
-.field-layer {
-  --top-a: 1;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, var(--top-a)) 0%, rgba(0, 0, 0, calc(var(--top-a) * 0.55)) 30%, transparent 62%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, var(--top-a)) 0%, rgba(0, 0, 0, calc(var(--top-a) * 0.55)) 30%, transparent 62%);
-}
-.field-canvas { position: absolute; inset: 0; }
-.field-haze {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(420px circle at var(--fx, 50%) var(--fy, 30%), rgba(var(--accent-rgb), 0.18), transparent 70%),
-    radial-gradient(700px circle at var(--fx, 50%) var(--fy, 30%), rgba(20, 73, 20, 0.35), transparent 70%),
-    radial-gradient(1000px circle at var(--fx, 50%) var(--fy, 30%), rgba(255, 255, 255, 0.07), transparent 70%);
-}
-/* Real page content sits above the field. */
+/* Vector folk motifs, scoped to the hero rather than the whole viewport. */
+.field-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.field-canvas { position: absolute; width: 100%; height: 100%; inset: 0; }
 .nav, main, footer { position: relative; z-index: 1; }
 
 /* ── Nav ──────────────────────────────────────────────── */
@@ -236,11 +198,9 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 .nav__pill--cta { justify-self: end; padding: 0 7px; gap: var(--space-1); }
 .nav__links.nav__pill .pill-nav__ind { top: 10px; bottom: 10px; }
 .glass {
-  /* Nav bar: a calm forest pill — light frost so content reads underneath,
-     a hairline border, one sand hairline on the top edge, a soft drop shadow.
-     No refraction, no gloss: the bar should recede, the content should lead. */
+  /* Quiet charcoal navigation stays legible over the printed hero. */
   position: relative; isolation: isolate;
-  background: rgba(7, 25, 6, 0.72);
+  background: rgba(11, 11, 11, .88);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid var(--c-line);
@@ -249,9 +209,9 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 }
 .glass:hover { border-color: var(--c-line-strong); }
 /* once the page scrolls, the bar firms up so it stays legible over busy sections */
-.nav.is-scrolled .glass { background: rgba(5, 15, 4, 0.88); }
+.nav.is-scrolled .glass { background: rgba(11, 11, 11, .96); }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass { background: rgba(5, 15, 4, 0.96); }
+  .glass { background: rgba(11, 11, 11, .96); }
 }
 .nav__brand { display: flex; align-items: center; gap: var(--space-3); }
 .nav__sep { width: 1px; height: 22px; background: var(--c-line-strong); }
@@ -277,75 +237,78 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
   .nav__inner { grid-template-columns: 1fr auto; gap: var(--space-2); }
   .nav__pill { height: 52px; }
   .nav__pill--brand { padding: 0 16px 0 14px; }
-  .nav__mark { font-size: 26px; }
+  .nav__mark { width: 104px; }
 }
 .menu { position: fixed; inset: 0; z-index: 45; background: rgba(10,10,11,.94); backdrop-filter: blur(12px); display: flex; align-items: flex-end; padding: 120px var(--gutter) 48px; }
 .menu[hidden] { display: none; }
 .menu nav { display: flex; flex-direction: column; gap: var(--space-2); }
 .menu a { font-size: var(--fs-h2); letter-spacing: -0.04em; color: var(--c-ink-strong); line-height: 1.1; }
 
-/* ── Hero ─────────────────────────────────────────────── */
-.hero { position: relative; min-height: 100svh; padding: 120px 0 48px; display: flex; align-items: center; overflow: hidden; }
-.hero::before { content: ''; position: absolute; left: 50%; top: 42%; width: 1000px; height: 560px; transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(20, 73, 20, 0.55), transparent), radial-gradient(closest-side at 60% 55%, rgba(var(--accent-rgb), 0.07), transparent); pointer-events: none; }
-.hero::after { content: ''; position: absolute; inset: auto 0 0; height: 160px; background: linear-gradient(transparent, var(--c-bg)); pointer-events: none; }
-.hero .container { position: relative; z-index: 1; }
-.hero__meta { display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-7); }
+/* ── Hero: a contemporary Indian festival poster ── */
+.hero {
+  --c-bg: var(--p-red); --c-ink: var(--p-sand); --c-ink-strong: #FFF3D5;
+  --c-muted: #FFF0D1; --c-line: rgba(244,231,195,.3); --c-line-strong: rgba(244,231,195,.55);
+  position: relative; isolation: isolate; min-height: 100svh;
+  padding: var(--space-10) 0 var(--space-7); display: flex; align-items: center;
+  background: var(--c-poster); overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; width: min(94vw, 1100px); aspect-ratio: 1;
+  top: 40%; left: 50%; transform: translate(-50%, -50%);
+  background: var(--ornament) center / contain no-repeat; opacity: .38; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; inset-inline: 0; height: 32px;
+  background: var(--folk-border) center / 160px 32px repeat-x; opacity: .8; pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; max-width: 1320px; }
+.hero__meta { display: flex; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-5); }
+.hero__meta .label { color: var(--p-sand); }
+.hero__edition { text-align: right; }
 .hero__title { margin: 0; line-height: 0; }
-.hero__logo.logo-wrap { display: flex; justify-content: center; font-size: min(17vw, 256px); }
-.stripes { display: inline-flex; gap: 3px; margin-right: 4px; }
-.stripes i { width: 14px; height: 4px; transform: skewX(-24deg); background: var(--c-accent); }
-.stripes i:nth-child(2) { background: var(--c-ink-strong); }
-.stripes i:nth-child(3) { background: var(--c-nardo); }
-.hero__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-7); margin-top: var(--space-8); flex-wrap: wrap; }
-.hero__copy { max-width: 44ch; }
-.hero__lead { font-size: var(--fs-h3); line-height: 1.15; letter-spacing: -0.025em; color: var(--c-ink-strong); margin-bottom: var(--space-4); }
-.hero__lead .line { display: block; overflow: hidden; padding-bottom: .06em; }
+.hero__logo.logo-wrap { display: block; width: 100%; }
+.hero__ornament { display: flex; justify-content: center; align-items: center; gap: var(--space-4); margin-top: var(--space-3); color: var(--p-yellow); }
+.hero__ornament svg { width: 40px; height: 40px; fill: currentColor; }
+.hero__ornament span { width: min(18vw, 220px); height: 1px; background: currentColor; }
+.hero__ornament span:first-child::after, .hero__ornament span:last-child::before { content: ''; width: 5px; height: 5px; display: block; background: currentColor; transform: translateY(-2px) rotate(45deg); }
+.hero__ornament span:first-child::after { margin-left: auto; }
+.hero__foot { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-7); margin-top: var(--space-6); flex-wrap: wrap; }
+.hero__copy { max-width: 52ch; }
+.hero__lead { font-size: var(--fs-h3); line-height: 1.2; letter-spacing: -.025em; margin-bottom: var(--space-3); font-weight: 500; }
+.hero__lead .line { display: block; overflow: hidden; padding-bottom: .08em; }
 .hero__lead .line > span { display: inline-block; }
-
-.hero__sub { max-width: 52ch; }
-.hero__cta { display: flex; gap: var(--space-3); flex-wrap: wrap; }
-.hero__readout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: var(--space-8); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); }
-.hero__readout div { padding: var(--space-3) 0; display: flex; flex-direction: column; gap: 6px; }
+.hero__lead .em { color: var(--p-yellow); }
+.hero__sub { max-width: 46ch; font-size: var(--fs-sm); }
+.hero__cta { display: flex; gap: var(--space-3); flex-wrap: wrap; padding-bottom: var(--space-1); }
+.hero .btn--primary { box-shadow: 4px 4px 0 var(--p-black); }
+.hero .btn--ghost { background: rgba(139,15,20,.2); border-color: rgba(244,231,195,.65); }
+.hero .btn--ghost:hover { background: var(--p-maroon); }
+.hero__readout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: var(--space-7); border-top: 1px solid var(--c-line); font-size: var(--fs-sm); }
+.hero__readout div { padding: var(--space-3) 0; display: flex; flex-direction: column; gap: var(--space-1); }
 .hero__readout div + div { padding-left: var(--space-4); border-left: 1px solid var(--c-line); }
-.hero__readout dt { color: var(--c-muted); text-transform: uppercase; letter-spacing: .08em; font-size: var(--fs-xs); }
-.hero__readout dd { color: var(--c-ink-strong); font-size: var(--fs-lg); font-weight: 500; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+.hero__readout dt { color: var(--p-sand); text-transform: uppercase; letter-spacing: .1em; font-size: var(--fs-2xs); }
+.hero__readout dd { color: var(--p-sand); font-size: var(--fs-base); font-weight: 500; display: flex; align-items: center; gap: var(--space-2); }
 @media (max-width: 720px) {
-  .hero__readout { grid-template-columns: repeat(2, 1fr); }
+  .hero { min-height: auto; padding-top: var(--space-10); }
+  .hero__meta { margin-bottom: var(--space-6); gap: var(--space-2); }
+  .hero__meta .label { font-size: var(--fs-2xs); }
+  .hero__edition { text-align: left; }
+  .hero__ornament { margin-top: var(--space-5); }
+  .hero__foot { margin-top: var(--space-6); gap: var(--space-5); }
+  .hero__copy { max-width: 100%; }
+  .hero__readout { grid-template-columns: repeat(2, 1fr); margin-top: var(--space-6); }
   .hero__readout div:nth-child(3) { padding-left: 0; border-left: 0; }
   .hero__readout div:nth-child(n+3) { border-top: 1px solid var(--c-line); }
 }
 
-/* ── Logo mark: '27 wordmark — inline layered SVG (src/logo.js) ──
-   Sized in em: set font-size on the wrapper and the mark scales with it.
-   Single flat colour via currentColor. Letters never move; the leaf, star
-   and comet animate on hover (GSAP, see src/logo.js). */
-.logo { display: block; height: 1em; width: auto; aspect-ratio: 2132 / 394; color: var(--c-logo); user-select: none; -webkit-user-drag: none; }
-.logo svg { display: block; width: 100%; height: 100%; overflow: visible; }
+/* The wordmark's lettering is static; folk ornaments animate inside its clip. */
+.logo { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 1835 / 432; user-select: none; -webkit-user-drag: none; }
+.logo svg { display: block; width: 100%; height: auto; overflow: visible; }
 .logo-wrap { display: inline-block; }
-/* Liquid-glass decorations (src/logo.js → glassDecor): one lens per leaf / planet,
-   masked to its shape; refraction is set inline (Chromium). The specular map and a
-   light, clear tint (warming slightly to the accent at the bottom) paint the glass. */
-.logo { position: relative; }
-.logo .lg-eye__iris { color: var(--c-leaf); }        /* iris matches the sprout */
-.logo .lg-trail { color: rgb(var(--comet-rgb)); }
-.logo .lg-planet--big { color: rgb(var(--comet-rgb)); }
-.logo .lg-planet--mid { color: var(--c-planet-2); }
-.logo .lg-planet--halo { color: var(--c-planet-3); }
-/* glass parts: strong colour tint so they read as coloured glass, not dark holes */
-.lg-glass.lg-glass--leaf { background: var(--glass-spec) center / 100% 100% no-repeat,
-  linear-gradient(180deg, rgba(var(--leaf-rgb),0.95) 0%, rgba(var(--leaf-rgb),0.8) 55%, rgba(var(--logo-rgb),0.95) 92%, var(--c-logo) 100%); }
-.lg-glass.lg-glass--big  { --tint: var(--comet-rgb); }
-.lg-glass.lg-glass--mid  { --tint: var(--planet2-rgb); }
-.lg-glass.lg-glass--halo { --tint: var(--planet3-rgb); }
-.lg-glass {
-  position: absolute; pointer-events: none; transform-origin: 0 0; --tint: 255, 255, 255;
-  background:
-    var(--glass-spec) center / 100% 100% no-repeat,
-    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.35), transparent 45%),
-    linear-gradient(170deg, rgba(var(--tint),0.95), rgba(var(--tint),0.7));
-  -webkit-mask: var(--lens-mask) center / 100% 100% no-repeat;
-  mask: var(--lens-mask) center / 100% 100% no-repeat;
-}
+.nav__mark { width: 126px; }
+.nav__mark .logo { width: 100%; height: auto; }
+.sk-ornament { transform-box: fill-box; }
+
 /* ── '26 archive mark (recap page): white emblem, gold hover ──
    Jelly-bounce in the spirit of the old dot bounce — squash, stretch,
    overshoot, settle — plus a gold glow bloom. */
@@ -376,20 +339,38 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 }
 
 /* ── Marquee ──────────────────────────────────────────── */
-.marquee { border-block: 1px solid var(--c-line); overflow: hidden; padding: var(--space-5) 0; background: var(--c-bg); }
+.marquee { border-block: 1px solid var(--p-black); overflow: hidden; padding: var(--space-5) 0; background: var(--p-indigo); }
 .marquee__track { display: flex; width: max-content; will-change: transform; }
 .marquee__group { display: flex; align-items: center; gap: var(--space-7); padding-right: var(--space-7); flex: none; }
 .marquee__item { font-size: var(--fs-h3); letter-spacing: -0.03em; color: var(--c-ink); white-space: nowrap; }
-.marquee__item { font-weight: 600; text-transform: uppercase; letter-spacing: -0.02em; transform: skewX(-12deg); }
+.marquee__item { font-weight: 500; text-transform: uppercase; letter-spacing: .015em; }
 .marquee__item:nth-child(4n+2) { color: transparent; -webkit-text-stroke: 1px var(--c-muted); }
-.marquee__sep { width: 18px; height: 6px; background: var(--c-accent); transform: skewX(-20deg); flex: none; }
+.marquee__sep { width: 28px; height: 28px; color: var(--p-yellow); flex: none; }
 
-/* ── About ────────────────────────────────────────────── */
-.about__statement { font-size: var(--fs-statement); line-height: 1.2; letter-spacing: -0.03em; font-weight: 400; max-width: 30ch; }
-.about__statement .w { opacity: .18; }
+/* ── Culture: warm paper, generous type and clear hierarchy ── */
+.about { overflow: hidden; }
+.about::before { content: ''; position: absolute; width: min(55vw, 640px); aspect-ratio: 1; right: -12%; top: 8%; background: var(--ornament) center / contain no-repeat; opacity: .12; pointer-events: none; }
+.about .container { position: relative; }
+.section-kicker { margin-bottom: var(--space-5); }
+.about__statement { font-family: var(--font-display); font-size: var(--fs-statement); line-height: 1.3; letter-spacing: -.035em; font-weight: 400; max-width: 31ch; }
+.about__statement .w { opacity: .3; }
 .no-js-motion .about__statement .w { opacity: 1; }
 .about__facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-5); margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--c-line); }
 .about__facts p { margin-top: var(--space-2); color: var(--c-ink); }
+.culture { padding-top: 0; }
+.culture .section-head { border-top: 1px solid var(--c-line); padding-top: var(--space-7); }
+.culture-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--space-4); }
+.culture-card { position: relative; display: flex; flex-direction: column; padding: var(--space-6); min-height: 360px; overflow: hidden; background: var(--c-poster); color: var(--p-sand); border-radius: var(--radius-lg); }
+.culture-card:nth-child(2) { background: var(--p-indigo); }
+.culture-card:nth-child(3) { background: var(--p-maroon); }
+.culture-card::after { content: ''; position: absolute; right: -30px; bottom: -30px; width: 150px; aspect-ratio: 1; border-radius: 50%; background-image: radial-gradient(var(--p-black) 1.2px, transparent 1.5px); background-size: 6px 6px; opacity: .16; pointer-events: none; }
+.culture-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-7); }
+.culture-card .label { color: var(--p-sand); font-size: var(--fs-2xs); line-height: 1.5; max-width: 12ch; }
+.culture-card__motif { width: 84px; height: 84px; flex: none; color: var(--p-yellow); transition: transform var(--dur-slower) var(--ease-out-expo); }
+.culture-card:hover .culture-card__motif { transform: rotate(8deg); }
+.culture-card h3 { font-family: var(--font-display); font-size: var(--fs-h3); line-height: 1.15; color: var(--p-sand); letter-spacing: -.025em; margin-bottom: var(--space-4); }
+.culture-card p { font-size: var(--fs-sm); line-height: 1.6; max-width: 34ch; margin-top: auto; }
+@media (max-width: 900px) { .culture-grid { grid-template-columns: 1fr; } .culture-card { min-height: 260px; } .culture-card__top { margin-bottom: var(--space-4); } }
 @media (max-width: 720px) { .about__facts { grid-template-columns: 1fr; } }
 
 /* ── Section heads ────────────────────────────────────── */
@@ -516,7 +497,9 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 @media (max-width: 820px) { .ach { grid-template-columns: 1fr; } }
 
 /* ── CTA ──────────────────────────────────────────────── */
-.cta { border-top: 1px solid var(--c-line); overflow: hidden; }
+.cta { border-top: 1px solid var(--c-line); overflow: hidden; background: var(--p-maroon); }
+.cta::before { content: ''; position: absolute; width: min(55vw, 640px); aspect-ratio: 1; right: -12%; top: -25%; background: var(--ornament) center / contain no-repeat; opacity: .28; filter: brightness(3); pointer-events: none; }
+.cta .container { position: relative; }
 .cta .display { margin: var(--space-5) 0 var(--space-7); }
 .cta__row { display: flex; justify-content: space-between; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
 .cta__sub { max-width: 44ch; font-size: var(--fs-lg); }
@@ -550,20 +533,11 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 
 /* ── Footer ───────────────────────────────────────────── */
 .footer { position: relative; isolation: isolate; padding: var(--space-9) 0 var(--space-5); border-top: 1px solid var(--c-line); background: var(--c-bg); overflow: hidden; }
-.footer__glyphs { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.footer__motifs { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .footer__canvas {
   position: absolute; inset: 0;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%);
   mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%);
-}
-.footer__haze {
-  position: absolute; inset: 0;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%);
-  mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.35) 18%, #000 42%);
-  background:
-    radial-gradient(560px circle at var(--fx, 50%) var(--fy, 45%), rgba(var(--accent-rgb), 0.2), transparent 70%),
-    radial-gradient(900px circle at var(--fx, 50%) var(--fy, 45%), rgba(20, 73, 20, 0.4), transparent 70%),
-    radial-gradient(1200px circle at var(--fx, 50%) var(--fy, 45%), rgba(255, 255, 255, 0.07), transparent 70%);
 }
 .footer .container { position: relative; z-index: 2; }
 .footer__top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-7); flex-wrap: wrap; }
@@ -572,7 +546,7 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 .footer__links { display: flex; gap: var(--space-5); flex-wrap: wrap; font-size: var(--fs-sm); }
 .footer__mark { display: block; margin: var(--space-9) 0 var(--space-6); line-height: 0; }
 .footer__mark .logo-wrap { display: block; }
-.footer__mark .logo { font-size: min(26vw, 380px); height: auto; width: 100%; }
+.footer__mark .logo { height: auto; width: 100%; }
 .footer__bottom { display: flex; justify-content: space-between; gap: var(--space-4); font-size: var(--fs-2xs); padding-top: var(--space-4); border-top: 1px solid var(--c-line); }
 
 /* ── Motion gating: hidden only when JS will reveal it ── */
@@ -610,7 +584,7 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
 .mascot.is-3d .mascot__fallback { opacity: 0; pointer-events: none; }
 
 .mascot__bubble { position: relative; width: min(300px, calc(100vw - 32px)); padding: 16px 16px 14px; border-radius: 18px;
-  background: rgba(5, 15, 4, 0.92); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  background: rgba(11, 11, 11, .94); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border: 1px solid var(--c-line-strong); box-shadow: inset 0 1px 0 rgba(var(--logo-rgb), 0.1), 0 20px 50px -16px rgba(0,0,0,0.7); }
 .mascot__bubble[hidden] { display: none; }
 .mascot__bubble::after { content: ''; position: absolute; right: 54px; bottom: -7px; width: 12px; height: 12px; transform: rotate(45deg);
@@ -633,3 +607,43 @@ body.in-recap { --cursor-accent: #7EE7A0; --cursor-ink: #04140A; }
   .mascot__fallback i { width: 42px; height: 46px; }
   .mascot__bubble::after { right: 36px; }
 }
+
+/* Print accents stay at the edge of content rather than behind body copy. */
+.lineup { border-top: 1px solid var(--c-line); }
+.bento .card { border-top: 3px solid var(--card-accent, var(--p-yellow)); }
+.bento__events { --card-accent: var(--p-red); }
+.bento__comps { --card-accent: var(--p-indigo); }
+.bento__sponsors { --card-accent: var(--p-sand); }
+.bento .card::after { content: ''; position: absolute; width: 130px; height: 130px; right: -38px; bottom: -50px; background: var(--ornament) center / contain no-repeat; opacity: .15; pointer-events: none; }
+.recap::before { content: ''; position: absolute; top: -100px; right: -160px; width: min(65vw, 800px); aspect-ratio: 1; background: var(--p-green); -webkit-mask: var(--ornament) center / contain no-repeat; mask: var(--ornament) center / contain no-repeat; opacity: .12; pointer-events: none; }
+.ev__tag.chip { color: var(--p-sand); }
+.ev__row { flex-wrap: wrap; }
+.footer::before { content: ''; position: absolute; top: 0; inset-inline: 0; height: 32px; background: var(--folk-border) center / 160px 32px repeat-x; opacity: .55; }
+.icon-btn, .filters .chip, .tab, .mascot__btn, .mascot__cta { min-height: 44px; }
+.icon-btn { min-width: 44px; }
+.btn--sm { --btn-h: 44px; }
+.hero .btn--primary.is-soon::before { background: var(--p-black); color: var(--p-sand); }
+@media (max-width: 380px) {
+  .nav__mark { width: 85px; }
+  .nav__sep { display: none; }
+  .nav__pill--brand { padding-inline: 10px; }
+  .nav__brand { gap: 8px; }
+  .nav__brand > img { width: 18px; }
+  .nav__pill--cta .btn { padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .culture-card:hover .culture-card__motif { transform: none; }
+  .about__statement .w { opacity: 1; }
+}
+
+/* Smoke is a pair of pre-rendered SVG plumes: animate only their transforms
+   and opacity, rather than running a turbulence filter every frame. */
+.page-smoke { position: fixed; inset: 0; z-index: 10000; isolation: isolate; overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none; }
+.page-smoke__veil { position: absolute; inset: 0; background: var(--c-smoke); }
+.page-smoke__plume { position: absolute; inset: -20%; background: url('/patterns/smoke.svg') center / 100% 100% no-repeat; transform: scale(1.08); pointer-events: none; }
+.page-smoke__plume--near { opacity: .86; }
+.page-smoke__plume--far { opacity: .52; background-position: 60% 45%; rotate: 180deg; }
+.smoke-entering .page-smoke, .page-smoke.is-active { opacity: 1; visibility: visible; }
+.smoke-leaving .page-smoke { pointer-events: auto; touch-action: none; }
+.smoke-entering .page-smoke__plume, .smoke-leaving .page-smoke__plume { will-change: transform, opacity; }
+@media (prefers-reduced-motion: reduce) { .page-smoke { display: none; } }

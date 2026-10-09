@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none" stroke="#8B0F14" stroke-width="2">
+<defs><path id="petal" d="M300 300C218 256 218 116 300 45C382 116 382 256 300 300Z"/><path id="arch" d="M300 12C320 62 355 35 367 79C423 61 417 103 461 116C451 164 498 164 491 204C541 216 514 254 588 300"/></defs>
+<circle cx="300" cy="300" r="193"/><circle cx="300" cy="300" r="202" stroke-dasharray="3 10"/>
+<use href="#petal"/><use href="#petal" transform="rotate(45 300 300)"/><use href="#petal" transform="rotate(90 300 300)"/><use href="#petal" transform="rotate(135 300 300)"/><use href="#petal" transform="rotate(180 300 300)"/><use href="#petal" transform="rotate(225 300 300)"/><use href="#petal" transform="rotate(270 300 300)"/><use href="#petal" transform="rotate(315 300 300)"/>
+<use href="#arch"/><use href="#arch" transform="rotate(90 300 300)"/><use href="#arch" transform="rotate(180 300 300)"/><use href="#arch" transform="rotate(270 300 300)"/>
+<circle cx="300" cy="300" r="32"/><circle cx="300" cy="300" r="19"/>
+</svg>

@@ -2,7 +2,7 @@
 import { gsap, ScrollTrigger, SplitText } from '../core/gsap.js';
 import { $, $$, reduce, finePointer, esc, pad2 } from '../core/env.js';
 import { fest } from '../data.js';
-import { scrollToTarget } from '../core/scroll.js';
+import { scrollToTarget, stopScroll, startScroll } from '../core/scroll.js';
 
 let toastTimer;
 function toast() {
@@ -16,22 +16,43 @@ function toast() {
 /* ── Nav ─────────────────────────────────────────────── */
 const toggle = $('.nav__toggle');
 const menu = $('#menu');
+let previousOverflow = '';
 function closeMenu() {
   if (!menu || menu.hidden) return;
   menu.hidden = true;
   toggle.setAttribute('aria-expanded', 'false');
   toggle.setAttribute('aria-label', 'Open menu');
+  document.body.style.overflow = previousOverflow;
+  $$('main, footer').forEach((el) => { el.inert = false; });
+  startScroll();
+  toggle.focus({ preventScroll: true });
 }
 export function initNav() {
   if (!toggle || !menu) return;
   toggle.addEventListener('click', () => {
-    const open = menu.hidden;
-    menu.hidden = !open;
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    if (open && !reduce) gsap.from('.menu a', { yPercent: 60, opacity: 0, stagger: 0.06, duration: 0.6, ease: 'expo.out' });
+    if (!menu.hidden) { closeMenu(); return; }
+    menu.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close menu');
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    $$('main, footer').forEach((el) => { el.inert = true; });
+    stopScroll();
+    if (!reduce) gsap.from('.menu a', { yPercent: 60, opacity: 0, stagger: 0.06, duration: 0.6, ease: 'expo.out' });
+    menu.querySelector('a')?.focus({ preventScroll: true });
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+  document.addEventListener('keydown', (e) => {
+    if (menu.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); }
+    if (e.key === 'Tab') {
+      const controls = [...$$('a[href]', menu), toggle];
+      const current = controls.indexOf(document.activeElement);
+      e.preventDefault();
+      controls[(current + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+    }
+  });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
+  matchMedia('(min-width: 821px)').addEventListener('change', (e) => { if (e.matches && !menu.hidden) closeMenu(); });
 
   const nav = $('[data-nav]');
   let lastY = 0;

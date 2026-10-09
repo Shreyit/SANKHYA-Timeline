@@ -10,7 +10,7 @@ export const SECTIONS = [
     key: 'hero', selector: '.hero', label: 'Welcome', mood: 'happy',
     tips: [
       "Hi, I'm Sanku — Sankhya's sprout. Sankhya means number in Sanskrit.",
-      'Hover the logo: the leaf sways, the star spins, the comet streams — and the eye follows you.',
+      'Move across the hero to reveal Indian folk-inspired motifs. Hover Sankhya to see its flowers and ornaments come alive.',
       "Sankhya '27 is still loading. Dates, lineup and registrations drop soon.",
     ],
     cta: { label: "See how '26 went", href: 'recap.html' },
@@ -20,6 +20,13 @@ export const SECTIONS = [
     tips: [
       'Sankhya is run by the School of Analytics, TISS Mumbai — culture, measured.',
       'One academic day, then two days of culturals. Bring a friend (or a whole crew).',
+    ],
+  },
+  {
+    key: 'culture', selector: '#culture', label: 'Many roots', mood: 'excited',
+    tips: [
+      'Different rhythms, traditions and ways of seeing. There is room for your expression at Sankhya.',
+      'The lotus, paisley and rangoli-inspired details are part of our new visual identity.',
     ],
   },
   {
