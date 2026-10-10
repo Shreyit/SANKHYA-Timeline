@@ -1,4 +1,4 @@
-// Renders data-driven blocks (stats, days, events, committee…) from data.js.
+// Renders data-driven blocks (stats, event photographs, committee…) from data.js.
 import { gsap, ScrollTrigger, SplitText } from '../core/gsap.js';
 import { $, $$, reduce, finePointer, esc, pad2 } from '../core/env.js';
 import { fest, marquee, recap, committee, culture } from '../data.js';
@@ -10,6 +10,9 @@ import { motifSvg } from '../brand/motifs.js';
 export function render() {
   const year = $('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  const theme = $('[data-fest-theme]');
+  if (theme) theme.textContent = `${fest.theme} / ${fest.edition}`;
 
   const mq = $('[data-marquee]');
   if (mq) {
@@ -37,60 +40,23 @@ export function render() {
       <span class="label">${esc(s.label)}</span>
     </div>`).join('');
 
-  const tabsEl = $('[data-tabs]');
-  if (tabsEl) tabsEl.insertAdjacentHTML('beforeend', recap.days.map((d, i) => `
-    <button class="tab" role="tab" id="tab-${i}" aria-controls="day-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-cursor="Show ${d.label.toLowerCase()}">${d.label} · ${d.date}</button>`).join(''));
-  const daysEl = $('[data-days]');
-  if (daysEl) daysEl.innerHTML = recap.days.map((d, i) => `
-    <div class="day" role="tabpanel" id="day-${i}" aria-labelledby="tab-${i}" ${i ? 'hidden' : ''}>
-      <div class="day__side">
-        <span class="mono muted">${d.label}</span>
-        <span class="day__date">${esc(d.date)}</span>
-        <span class="day__theme">${esc(d.theme)}</span>
-      </div>
-      <ol class="slots">${d.items.map((it) => `
-        <li>
-          <time>${it.time}${it.end ? `<br>–${it.end}` : ''}</time>
-          <div><strong>${esc(it.title)}</strong><span>${esc(it.sub)}</span>${it.body ? `<p>${esc(it.body)}</p>` : ''}</div>
-        </li>`).join('')}
-      </ol>
-    </div>`).join('');
-
-  const filtersEl = $('[data-filters]');
-  const eventsEl = $('[data-events]');
-  if (filtersEl && eventsEl) {
-    const cats = ['All', ...new Set(recap.events.map((e) => e.cat))];
-    filtersEl.innerHTML = cats.map((c, i) => `<button class="chip" aria-pressed="${i === 0}" data-cat="${esc(c)}" data-cursor="${c === 'All' ? 'Show all' : `Filter: ${esc(c.toLowerCase())}`}">${esc(c)}</button>`).join('');
-    eventsEl.innerHTML = recap.events.map((e, i) => `
-    <article class="card spot ev" data-cat="${esc(e.cat)}" data-fade>
-      <div class="ev__media">
-        ${e.photo
-          ? `<img src="${esc(e.photo)}" alt="${esc(e.name)} at Sankhya 2026" loading="lazy" />`
-          : `<div class="ev__ph"><div><b>${pad2(i + 1)}</b>photo drop soon</div></div>`}
-        <span class="chip ev__tag">${esc(e.day)}</span>
-      </div>
-      <div class="ev__body">
-        <div class="ev__row"><h4 class="ev__name">${esc(e.name)}</h4><span class="ev__kind mono">${esc(e.kind)}</span></div>
-        <p class="muted">${esc(e.blurb)}</p>
-        <p class="ev__result mono">${e.result ? esc(e.result) : 'Results — being archived'}</p>
-      </div>
-    </article>`).join('');
-  }
-
-  const achEl = $('[data-ach]');
-  if (achEl) {
-    const ach = [
-      { k: '01', t: 'Winners wall', d: 'Podium finishes across all nine competitions.' },
-      { k: '02', t: 'Standout moments', d: 'Performances and pieces the jury couldn’t stop talking about.' },
-      { k: '03', t: 'By the numbers', d: 'Participants, colleges, footfall — the full 2026 dataset.' },
-    ];
-    achEl.innerHTML = ach.map((a) => `
-    <div class="card spot" data-fade>
-      <span class="chip" style="align-self:flex-start"><span class="dot dot--pulse"></span>Archiving</span>
-      <span class="ach__k">${a.k}</span>
-      <h4 class="h3">${a.t}</h4>
-      <p class="muted">${a.d}</p>
-    </div>`).join('');
+  const film = $('[data-film-gallery]');
+  if (film) {
+    const photos = recap.photos || [];
+    film.hidden = photos.length === 0;
+    $('[data-film-track]', film).innerHTML = photos.map((photo) => `
+      <li class="filmstrip__frame" data-film-frame>
+        <figure>
+          <div class="filmstrip__photo">
+            <img src="${esc(photo.src)}" ${photo.srcset ? `srcset="${esc(photo.srcset)}"` : ''}
+              sizes="(max-width: 767px) 86vw, (max-width: 1200px) 76vw, 960px"
+              width="${Number(photo.width) || 1600}" height="${Number(photo.height) || 900}"
+              alt="${esc(photo.alt)}" loading="lazy" decoding="async" />
+          </div>
+        </figure>
+      </li>`).join('');
+    $('[data-film-position]', film).textContent = `01 / ${pad2(photos.length)}`;
+    $('[data-film-controls]', film).hidden = photos.length < 2;
   }
 
   const committeeEl = $('[data-committee]');

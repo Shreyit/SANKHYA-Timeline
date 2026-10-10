@@ -4,34 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sankhya '27 — TISS Mumbai Cultural Fest</title>
-  <meta name="description" content="Sankhya is the annual cultural fest of the School of Analytics, TISS Mumbai. The 2027 edition is loading — schedule, events, competitions and registrations coming soon." />
+  <meta name="description" content="Sankhya is the annual cultural fest of the School of Analytics, TISS Mumbai. The 2027 theme is cultural diversity. Schedule, events, competitions and registrations coming soon." />
   <meta name="theme-color" content="#E61E25" />
   <meta property="og:title" content="Sankhya '27 — TISS Mumbai" />
-  <meta property="og:description" content="Where culture meets the data. The 2027 edition is loading." />
+  <meta property="og:description" content="Cultural diversity. Many roots, one Sankhya. The 2027 edition is coming together." />
   <link rel="icon" href="/logo/sankhya-popart-mark.svg" type="image/svg+xml" />
+  <link rel="preload" href="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" as="image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet" />
   <script>
     document.documentElement.classList.add('js');
     try {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) document.documentElement.classList.add('motion-off');
-      const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-smoke') || 'null');
-      sessionStorage.removeItem('sankhya-page-smoke');
-      if (!reduce && handoff?.to === location.pathname && Date.now() - handoff.at < 8000) {
-        document.documentElement.classList.add('smoke-entering');
-        // The curtain must never stay up if the module fails to load.
-        setTimeout(() => document.documentElement.classList.remove('smoke-entering'), 1600);
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) document.documentElement.classList.add('motion-off');
+      const historyRestore = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+      let entering = location.pathname.endsWith('/recap.html') && !historyRestore;
+      try {
+        const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-transition') || 'null');
+        sessionStorage.removeItem('sankhya-page-transition');
+        sessionStorage.removeItem('sankhya-page-smoke');
+        if (handoff?.to === location.pathname && Date.now() - handoff.at < 6000) entering = true;
+      } catch { /* the recap entrance also works without browser storage */ }
+      if (!reduced && entering) {
+        document.documentElement.classList.add('page-entering');
+        setTimeout(() => document.documentElement.classList.remove('page-entering'), 1400);
       }
-    } catch { /* normal page loading without storage */ }
+    } catch { /* native page loading */ }
   </script>
+  <style>
+    .page-transition{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#1B4D32;color:#F4E7C3;visibility:hidden;transform:translate3d(0,100%,0)}
+    .page-entering .page-transition{visibility:visible;transform:translate3d(0,0,0)}
+    .page-transition__content{width:min(76vw,760px);text-align:center}
+    .page-transition__wordmark{display:block;width:100%;aspect-ratio:1590/460;background:currentColor;-webkit-mask:url('/logo/sankhya-recap.svg?v=3') center/contain no-repeat;mask:url('/logo/sankhya-recap.svg?v=3') center/contain no-repeat}
+    .page-transition__caption{font:italic clamp(30px,5vw,64px)/1 Georgia,serif}
+    .transition-motif-band{height:36px;margin-top:24px}
+    .page-transition{font-family:Geist,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    .page-transition__content{position:relative;z-index:1;padding:32px 0}
+    .page-transition__kicker,.page-transition__note{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin:0}
+    .page-transition__kicker{margin-bottom:48px}
+    .page-transition__caption{margin:12px 0 0}
+    .transition-motif-band{display:flex;align-items:center;justify-content:center;gap:24px;color:#FFD129}
+    .transition-motif{width:28px;height:28px;flex:none}
+    .transition-motif:nth-child(3){width:36px;height:36px}
+    .page-transition__progress{width:min(220px,50vw);height:2px;margin:48px auto 24px;background:rgba(244,231,195,.18);overflow:hidden}
+    .page-transition__progress span{display:block;width:100%;height:100%;background:#F4E7C3;transform:scaleX(.64);transform-origin:left}
+    @media(prefers-reduced-motion:reduce){.page-transition{display:none}}
+  </style>
 </head>
-<body>
-  <div class="page-smoke" aria-hidden="true">
-    <div class="page-smoke__veil"></div>
-    <div class="page-smoke__plume page-smoke__plume--far"></div>
-    <div class="page-smoke__plume page-smoke__plume--near"></div>
+<body data-page="home">
+  <div class="page-transition" aria-hidden="true">
+    <div class="page-transition__content">
+      <p class="page-transition__kicker">TISS Mumbai · School of Analytics</p>
+      <span class="page-transition__wordmark"></span>
+      <p class="page-transition__caption" data-transition-caption>home</p>
+      <div class="transition-motif-band" aria-hidden="true"><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M36 86C6 76 7 43 32 34C57 26 65 8 61 3C89 22 92 64 70 82C60 91 46 92 36 86Z M42 72C25 63 30 46 44 45C56 44 63 37 65 28C78 51 65 80 42 72Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z M18 32C34 34 43 45 46 62C28 54 21 46 18 32Z M82 32C66 34 57 45 54 62C72 54 79 46 82 32Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 48C28 36 30 17 50 9C70 17 72 36 50 48Z M52 49C56 25 74 19 91 33C94 54 76 63 52 49Z M52 52C78 49 88 65 76 84C56 91 44 77 52 52Z M48 52C56 77 44 91 24 84C12 65 22 49 48 52Z M48 49C24 63 6 54 9 33C26 19 44 25 48 49Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z M18 32C34 34 43 45 46 62C28 54 21 46 18 32Z M82 32C66 34 57 45 54 62C72 54 79 46 82 32Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M36 86C6 76 7 43 32 34C57 26 65 8 61 3C89 22 92 64 70 82C60 91 46 92 36 86Z M42 72C25 63 30 46 44 45C56 44 63 37 65 28C78 51 65 80 42 72Z" fill="currentColor" fill-rule="evenodd"/></svg></div>
+      <div class="page-transition__progress"><span></span></div>
+      <p class="page-transition__note">The moments stay with us.</p>
+    </div>
   </div>
   <a class="skip" href="#main">Skip to content</a>
 
@@ -43,20 +73,23 @@
   <header class="nav" data-nav>
     <div class="nav__inner">
       <div class="nav__pill nav__pill--brand glass">
+        <span class="glass__shine" aria-hidden="true"></span>
         <a class="nav__brand logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top">
-          <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
+          <img src="/img/TISS_logo.png" alt="TISS" width="36" height="41" />
           <span class="nav__sep" aria-hidden="true"></span>
-          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="nav__mark logo-wrap"><img class="logo logo--graffiti" data-logo="graffiti" src="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" alt="Sankhya" draggable="false" /></span>
         </a>
       </div>
       <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
+        <span class="glass__shine" aria-hidden="true"></span>
         <span class="pill-nav__ind" aria-hidden="true"></span>
         <a class="pill-nav__link" href="#lineup" data-cursor="Jump to lineup">Lineup</a>
-        <a class="pill-nav__link" href="recap.html" data-cursor="Relive 2026">'26 Recap</a>
+        <a class="pill-nav__link" href="recap.html" data-cursor="View recap">Recap</a>
         <a class="pill-nav__link" href="#sponsors" data-cursor="Jump to sponsors">Sponsors</a>
         <a class="pill-nav__link" href="#contact" data-cursor="Reach the team">Contact</a>
       </nav>
       <div class="nav__pill nav__pill--cta glass">
+        <span class="glass__shine" aria-hidden="true"></span>
         <a class="btn btn--primary btn--sm" href="#register" data-register data-cursor="Opens soon">
           <span>Register</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
         </a>
@@ -68,7 +101,7 @@
   <div class="menu" id="menu" hidden>
     <nav aria-label="Mobile">
       <a href="#lineup">Lineup</a>
-      <a href="recap.html">'26 Recap</a>
+      <a href="recap.html">Recap</a>
       <a href="#sponsors">Sponsors</a>
       <a href="#contact">Contact</a>
       <a href="#register">Register</a>
@@ -82,12 +115,12 @@
       <div class="container">
         <div class="hero__meta">
           <p class="label" data-hero-label>TISS Mumbai · School of Analytics</p>
-          <p class="hero__edition label" data-hero-label>A cultural confluence / 2027</p>
+          <p class="hero__edition label" data-hero-label data-fest-theme>Cultural diversity / 2027</p>
         </div>
 
         <h1 id="hero-title" class="hero__title logo-trigger" data-hero-media>
           <span class="sr-only">Sankhya 2027 — the cultural fest of TISS Mumbai</span>
-          <span class="hero__logo logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="hero__logo logo-wrap"><img class="logo logo--graffiti" data-logo="graffiti" src="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" alt="Sankhya" draggable="false" /></span>
         </h1>
 
         <div class="hero__ornament" aria-hidden="true"><span></span><svg viewBox="0 0 100 100"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z"/></svg><span></span></div>
@@ -102,7 +135,7 @@
               <span>Be part of '27</span>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
             </a>
-            <a class="btn btn--ghost" href="recap.html" data-cursor="Relive 2026"><span>See Sankhya '26</span></a>
+            <a class="btn btn--ghost" href="recap.html" data-cursor="View recap"><span>See recap</span></a>
           </div>
         </div>
 
@@ -239,14 +272,14 @@
         </div>
         <nav class="footer__links" aria-label="Footer">
           <a class="link" href="#lineup" data-cursor="Jump to lineup">Lineup</a>
-          <a class="link" href="recap.html" data-cursor="Relive 2026">'26 Recap</a>
+          <a class="link" href="recap.html" data-cursor="View recap">Recap</a>
           <a class="link" href="#register" data-cursor="Opens soon">Register</a>
           <a class="link" href="#contact" data-cursor="Reach the team">Contact</a>
           <a class="link" href="https://www.instagram.com/tiss.sankhya" target="_blank" rel="noopener" data-cursor="Open Instagram">Instagram</a>
         </nav>
         <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
       </div>
-      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span></a>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya '27 — back to top"><span class="logo-wrap"><img class="logo logo--graffiti" data-logo="graffiti" src="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" alt="Sankhya" draggable="false" /></span></a>
       <div class="footer__bottom mono muted">
         <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
         <span>Many roots. One Sankhya.</span>

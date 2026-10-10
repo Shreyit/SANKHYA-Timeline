@@ -21,6 +21,9 @@ Cursor rules, `/docs` folder) so every design and animation decision follows one
 | `08-THEME-DARK-DEVTOOL.md` | Alternate theme: black, monochrome, Geist, deep shadows with inset highlights — for developer tools and AI products. |
 | `09-COMPONENT-SPEC-STANDARD.md` | How every component is specified: 7 required states, keyboard/pointer/touch, edge cases, testable a11y criteria, reference specs. |
 | `AGENT-INSTRUCTIONS.md` | A short, paste-ready instruction block for AI coding tools that points to all of the above. |
+| `10-THEME-INDIAN-POPART.md` | Active Sankhya brand palette, artwork and motion rules. |
+| `11-CULTURAL-DIVERSITY-RESEARCH.md` | Regional art references and a static-texture plan for Sankhya 2027. |
+| `12-RECAP-FILMSTRIP.md` | The compact scroll-driven photo reel, native mobile alternative and source credits. |
 
 ## How to use
 

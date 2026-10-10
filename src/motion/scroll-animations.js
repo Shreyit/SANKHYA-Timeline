@@ -32,11 +32,18 @@ export function initMotion() {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 1 } });
     tl.from('[data-nav]', { y: -20, opacity: 0, duration: 0.8 })
       .from('[data-hero-label]', { y: 16, opacity: 0, stagger: 0.08 }, '-=0.6')
-      .from('.hero__logo', { opacity: 0, y: 26, filter: 'blur(10px)', duration: 1.1, clearProps: 'opacity,filter,transform' }, '<0.1')
+      .from('.hero__logo', { opacity: 0, y: 20, duration: .85, clearProps: 'opacity,transform' }, '<0.1')
       .from('.hero__lead .line > span', { yPercent: 110, stagger: 0.1 }, '-=0.9')
       .from('.hero__sub, [data-hero-cta]', { y: 24, opacity: 0, stagger: 0.08 }, '-=0.7');
   } else if ($('[data-nav]')) {
     gsap.from('[data-nav]', { y: -20, opacity: 0, duration: 0.8, ease: 'expo.out' });
+  }
+
+  // The recap wordmark arrives as one quiet brush impression, without a bounce.
+  if ($('.recap-hero__title')) {
+    gsap.timeline({ defaults: { duration: .65, ease: 'power3.out' } })
+      .from('.recap-wordmark', { y: 16, opacity: 0, clearProps: 'opacity,transform' }, 0)
+      .from('.recap-hero__caption', { y: 12, opacity: 0, clearProps: 'opacity,transform' }, .08);
   }
 
   // Headline mask reveals (recipe 1)
@@ -65,9 +72,6 @@ export function initMotion() {
       scrollTrigger: { trigger: statement, start: 'top 80%', end: 'bottom 45%', scrub: 1 },
     });
   }
-
-  // Recap: slow drift of the soft ink wash (recap page only)
-  if ($('.recap__glow')) gsap.fromTo('.recap__glow', { yPercent: -10 }, { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '#recap', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   // Footer mark: slides in from the left like a car crossing the line
   if ($('.footer__mark')) gsap.from('.footer__mark .logo', {

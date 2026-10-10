@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="emulsion" x2="0" y2="1">
+      <stop stop-color="#202019" />
+      <stop offset=".1" stop-color="#0B0B0B" />
+      <stop offset=".9" stop-color="#0B0B0B" />
+      <stop offset="1" stop-color="#202019" />
+    </linearGradient>
+    <mask id="perforations">
+      <rect width="720" height="600" fill="white" />
+      <rect x="8" y="18.558" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="8" y="572.558" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="32" y="20.205" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="32" y="574.205" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="56" y="21.756" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="56" y="575.756" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="80" y="23.142" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="80" y="577.142" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="104" y="24.304" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="104" y="578.304" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="128" y="25.190" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="128" y="579.190" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="152" y="25.762" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="152" y="579.762" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="176" y="25.995" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="176" y="579.995" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="200" y="25.878" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="200" y="579.878" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="224" y="25.417" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="224" y="579.417" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="248" y="24.632" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="248" y="578.632" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="272" y="23.557" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="272" y="577.557" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="296" y="22.239" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="296" y="576.239" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="320" y="20.736" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="320" y="574.736" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="344" y="19.113" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="344" y="573.113" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="368" y="17.442" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="368" y="571.442" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="392" y="15.795" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="392" y="569.795" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="416" y="14.244" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="416" y="568.244" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="440" y="12.858" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="440" y="566.858" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="464" y="11.696" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="464" y="565.696" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="488" y="10.810" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="488" y="564.810" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="512" y="10.238" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="512" y="564.238" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="536" y="10.005" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="536" y="564.005" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="560" y="10.122" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="560" y="564.122" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="584" y="10.583" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="584" y="564.583" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="608" y="11.368" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="608" y="565.368" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="632" y="12.443" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="632" y="566.443" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="656" y="13.761" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="656" y="567.761" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="680" y="15.264" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="680" y="569.264" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="704" y="16.887" width="12" height="10" rx="1.8" fill="black" />
+      <rect x="704" y="570.887" width="12" height="10" rx="1.8" fill="black" />
+    </mask>
+  </defs>
+  <path d="M0 8.000 L12 8.836 L24 9.663 L36 10.472 L48 11.254 L60 12.000 L72 12.702 L84 13.353 L96 13.945 L108 14.472 L120 14.928 L132 15.308 L144 15.608 L156 15.825 L168 15.956 L180 16.000 L192 15.956 L204 15.825 L216 15.608 L228 15.308 L240 14.928 L252 14.472 L264 13.945 L276 13.353 L288 12.702 L300 12.000 L312 11.254 L324 10.472 L336 9.663 L348 8.836 L360 8.000 L372 7.164 L384 6.337 L396 5.528 L408 4.746 L420 4.000 L432 3.298 L444 2.647 L456 2.055 L468 1.528 L480 1.072 L492 0.692 L504 0.392 L516 0.175 L528 0.044 L540 0.000 L552 0.044 L564 0.175 L576 0.392 L588 0.692 L600 1.072 L612 1.528 L624 2.055 L636 2.647 L648 3.298 L660 4.000 L672 4.746 L684 5.528 L696 6.337 L708 7.164 L720 8.000 L720 592.000 L708 591.164 L696 590.337 L684 589.528 L672 588.746 L660 588.000 L648 587.298 L636 586.647 L624 586.055 L612 585.528 L600 585.072 L588 584.692 L576 584.392 L564 584.175 L552 584.044 L540 584.000 L528 584.044 L516 584.175 L504 584.392 L492 584.692 L480 585.072 L468 585.528 L456 586.055 L444 586.647 L432 587.298 L420 588.000 L408 588.746 L396 589.528 L384 590.337 L372 591.164 L360 592.000 L348 592.836 L336 593.663 L324 594.472 L312 595.254 L300 596.000 L288 596.702 L276 597.353 L264 597.945 L252 598.472 L240 598.928 L228 599.308 L216 599.608 L204 599.825 L192 599.956 L180 600.000 L168 599.956 L156 599.825 L144 599.608 L132 599.308 L120 598.928 L108 598.472 L96 597.945 L84 597.353 L72 596.702 L60 596.000 L48 595.254 L36 594.472 L24 593.663 L12 592.836 L0 592.000 Z" fill="url(#emulsion)" mask="url(#perforations)" />
+</svg>

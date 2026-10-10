@@ -4,6 +4,7 @@
 export const fest = {
   name: 'SANKHYA',
   edition: '2027',
+  theme: 'Cultural diversity',
   short: "'27",
   host: 'Tata Institute of Social Sciences, Mumbai',
   dept: 'School of Analytics',
@@ -32,13 +33,25 @@ export const culture = [
 ];
 
 // ── Sankhya 2026 recap ──────────────────────────────────────────────────
-// Add `photo: '/img/recap/greenscreen.jpg'` to any event to replace its placeholder,
-// and `result: '1st — Team Name'` to show achievements.
+// Add photographs to `recap.photos` for the filmstrip, and
+// `result: '1st — Team Name'` to an event to show achievements.
 export const recap = {
   title: 'Circle of Life',
   year: '2026',
   quote: 'Come and watch, as the magical circle of ideas, action, and celebration comes alive.',
   dates: 'March 14 – 16, 2026',
+  // Real archive photos only. Add frames here; the filmstrip grows sideways.
+  photos: [
+    {
+      id: 'fashion-01',
+      eventId: 're-vogue',
+      src: '/img/recap/events/re-vogue/fashion-01-1600.webp',
+      srcset: '/img/recap/events/re-vogue/fashion-01-960.webp 960w, /img/recap/events/re-vogue/fashion-01-1600.webp 1600w',
+      width: 1600, height: 900,
+      alt: 'Participants on the Re: Vogue runway in front of the Sankhya stage backdrop.',
+      title: 'Re: Vogue', caption: 'Sustainable Fashion Show', day: 'Day 03',
+    },
+  ],
   // Counted from the published 2026 schedule — edit freely (footfall, colleges…).
   stats: [
     { n: 3, label: 'Days' },
@@ -82,18 +95,22 @@ export const recap = {
     },
   ],
   events: [
-    { name: 'GreenScreen', kind: 'Short Film', blurb: '10–12 minute short film making competition.', day: 'Day 02', cat: 'Film' },
-    { name: 'SurReal', kind: 'Solo Singing', blurb: 'One voice, one stage, one shot.', day: 'Day 02', cat: 'Music' },
-    { name: 'ResoNation', kind: 'Group Singing', blurb: 'Harmonies built by the whole crew.', day: 'Day 02', cat: 'Music' },
-    { name: 'Crew Sync', kind: 'Group Dance', blurb: 'Choreography in perfect sync.', day: 'Day 03', cat: 'Dance' },
-    { name: 'Pulse', kind: 'Solo Dance', blurb: 'A solo floor for a single rhythm.', day: 'Day 03', cat: 'Dance' },
-    { name: 'The Loud Lounge', kind: 'Open Mic', blurb: 'Poetry, stand-up, stories — the mic is open.', day: 'Day 02', cat: 'Stage' },
-    { name: 'Re: Vogue', kind: 'Sustainable Fashion', blurb: 'A runway built on reuse and reinvention.', day: 'Day 03', cat: 'Fashion' },
-    { name: "There's No Planet B", kind: 'Policy Hackathon', blurb: 'Shark Tank meets policy design for a finite planet.', day: 'Day 02', cat: 'Academic' },
-    { name: 'Visualising the Field', kind: 'Conference', blurb: 'Kochi fieldwork, turned into an interactive dashboard.', day: 'Day 01', cat: 'Academic' },
-    { name: 'Waste Renaissance', kind: 'Best Out of Waste', blurb: 'Discarded material, reimagined.', day: 'Day 03', cat: 'Craft' },
-    { name: 'The Carbon Inheritance', kind: 'Theatrical Play', blurb: 'A play on what we leave behind.', day: 'Day 03', cat: 'Stage' },
-    { name: 'The Showdown', kind: 'Musical Night', blurb: 'The closing night, turned all the way up.', day: 'Day 03', cat: 'Music' },
+    { id: 'greenscreen', name: 'GreenScreen', kind: 'Short Film', blurb: '10–12 minute short film making competition.', day: 'Day 02', cat: 'Film' },
+    { id: 'surreal', name: 'SurReal', kind: 'Solo Singing', blurb: 'One voice, one stage, one shot.', day: 'Day 02', cat: 'Music' },
+    { id: 'resonation', name: 'ResoNation', kind: 'Group Singing', blurb: 'Harmonies built by the whole crew.', day: 'Day 02', cat: 'Music' },
+    { id: 'crew-sync', name: 'Crew Sync', kind: 'Group Dance', blurb: 'Choreography in perfect sync.', day: 'Day 03', cat: 'Dance' },
+    { id: 'pulse', name: 'Pulse', kind: 'Solo Dance', blurb: 'A solo floor for a single rhythm.', day: 'Day 03', cat: 'Dance' },
+    { id: 'the-loud-lounge', name: 'The Loud Lounge', kind: 'Open Mic', blurb: 'Poetry, stand-up, stories — the mic is open.', day: 'Day 02', cat: 'Stage' },
+    { id: 're-vogue', name: 'Re: Vogue', kind: 'Sustainable Fashion Show', blurb: 'A runway built on reuse and reinvention.', day: 'Day 03', cat: 'Fashion' },
+    { id: 'theres-no-planet-b', name: "There's No Planet B", kind: 'Policy Hackathon', blurb: 'Shark Tank meets policy design for a finite planet.', day: 'Day 02', cat: 'Academic' },
+    { id: 'visualising-the-field', name: 'Visualising the Field', kind: 'Dashboard Presentation', blurb: 'Kochi fieldwork, turned into an interactive dashboard.', day: 'Day 01', cat: 'Academic' },
+    { id: 'waste-renaissance', name: 'Waste Renaissance', kind: 'Best Out of Waste', blurb: 'Discarded material, reimagined.', day: 'Day 03', cat: 'Craft' },
+    { id: 'the-carbon-inheritance', name: 'The Carbon Inheritance', kind: 'Theatrical Play', blurb: 'A play on what we leave behind.', day: 'Day 03', cat: 'Stage' },
+    { id: 'the-showdown', name: 'The Showdown', kind: 'Musical Night', blurb: 'The closing night, turned all the way up.', day: 'Day 03', cat: 'Music' },
+    { id: 'conference', name: 'Conference', kind: 'Academic Conference', blurb: 'A full-day academic track at Sankhya.', day: 'Day 01', cat: 'Academic' },
+    { id: 'voices-behind-the-data', name: 'Voices Behind the Data', kind: 'Panel Discussion', blurb: 'An expert panel connecting the Kochi fieldwork, academic theory and grassroots experience.', day: 'Day 01', cat: 'Academic' },
+    { id: 'loop-lapeta', name: 'Loop Lapeta', kind: 'Treasure Hunt', blurb: 'The Day 02 treasure hunt.', day: 'Day 02', cat: 'Games' },
+    { id: 'aftermovie-screening', name: 'Aftermovie Screening', kind: 'Screening', blurb: 'The day two wrap, on screen.', day: 'Day 02', cat: 'Film' },
   ],
 };
 

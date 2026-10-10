@@ -13,7 +13,7 @@ export const SECTIONS = [
       'Move across the hero to reveal Indian folk-inspired motifs. Hover Sankhya to see its flowers and ornaments come alive.',
       "Sankhya '27 is still loading. Dates, lineup and registrations drop soon.",
     ],
-    cta: { label: "See how '26 went", href: 'recap.html' },
+    cta: { label: 'See recap', href: 'recap.html' },
   },
   {
     key: 'about', selector: '#about', label: 'About', mood: 'curious',
@@ -62,9 +62,9 @@ export const SECTIONS = [
   },
   // ── recap page ───────────────────────────────────────
   {
-    key: 'recap', selector: '#recap', label: "Sankhya '26", mood: 'proud',
+    key: 'recap', selector: '#recap', label: 'Sankhya recap', mood: 'proud',
     tips: [
-      "This is Sankhya '26 — Circle of Life. Three days, March 14–16, 2026.",
+      'Welcome to the Sankhya recap — the stages, stories and moments of Circle of Life.',
       'Every event from last year lives here. Photos are being added.',
     ],
   },
@@ -73,16 +73,12 @@ export const SECTIONS = [
     tips: ['Hover a number — the counters roll again.', '16 sessions in three days. We counted. (Obviously.)'],
   },
   {
-    key: 'days', selector: '[data-days]', label: 'The three days', mood: 'curious',
-    tips: ['Switch days with the tabs — or use ← → on your keyboard.', 'Day 01 was academic: the Kochi fieldwork dashboard and a panel.'],
-  },
-  {
-    key: 'events', selector: '[data-events]', label: 'Event snippets', mood: 'happy',
-    tips: ['Filter by category with the chips above the cards.', 'GreenScreen was a full short film in 10–12 minutes. Respect.'],
+    key: 'events', selector: '[data-film-gallery]', label: 'Event snippets', mood: 'happy',
+    tips: ['Scroll through the film on desktop, or swipe on your phone.', 'Event names and stories follow the photographs below the film.'],
   },
   {
     key: 'achievements', selector: '.achievements', label: 'Achievements', mood: 'proud',
-    tips: ["Winners and standout moments are being archived. Check back after we've counted."],
+    tips: ['Our 2026 greenhouse gas inventory was independently verified with limited assurance under ISO 14064-3:2019.', 'Open the statement to read the verification scope and technical support credits.'],
   },
   // ── both ─────────────────────────────────────────────
   {

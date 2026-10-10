@@ -18,7 +18,7 @@ export function initScroll() {
 /** Scroll to an element (or 0 for the top), smoothly when Lenis is running. */
 export function scrollToTarget(target, { offset = -24, duration = 1.4 } = {}) {
   if (lenis) lenis.scrollTo(target, { offset, duration });
-  else if (target === 0) window.scrollTo(0, 0);
+  else if (typeof target === 'number') window.scrollTo({ top: target, behavior: reduce ? 'auto' : 'smooth' });
   else target.scrollIntoView();
 }
 

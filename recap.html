@@ -3,35 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sankhya '26 Recap — Circle of Life | TISS Mumbai</title>
-  <meta name="description" content="Relive Sankhya '26 — Circle of Life, the annual cultural fest of the School of Analytics, TISS Mumbai. Stats, schedules, events and achievements from the archive." />
+  <title>Sankhya Recap — Circle of Life | TISS Mumbai</title>
+  <meta name="description" content="Relive Sankhya — the annual cultural fest of the School of Analytics, TISS Mumbai. Stats, schedules, events and achievements from the archive." />
   <meta name="theme-color" content="#F4E7C3" />
-  <meta property="og:title" content="Sankhya '26 — Circle of Life" />
-  <meta property="og:description" content="The 2026 archive: three days, nine competitions, one circle of life." />
+  <meta property="og:title" content="Sankhya Recap" />
+  <meta property="og:description" content="The stages, the stories and the moments that stayed with us." />
   <link rel="icon" href="/logo/sankhya-popart-mark.svg" type="image/svg+xml" />
+  <link rel="preload" href="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" as="image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet" />
   <script>
     document.documentElement.classList.add('js');
     try {
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) document.documentElement.classList.add('motion-off');
-      const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-smoke') || 'null');
-      sessionStorage.removeItem('sankhya-page-smoke');
-      if (!reduce && handoff?.to === location.pathname && Date.now() - handoff.at < 8000) {
-        document.documentElement.classList.add('smoke-entering');
-        // The curtain must never stay up if the module fails to load.
-        setTimeout(() => document.documentElement.classList.remove('smoke-entering'), 1600);
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) document.documentElement.classList.add('motion-off');
+      const historyRestore = performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
+      let entering = location.pathname.endsWith('/recap.html') && !historyRestore;
+      try {
+        const handoff = JSON.parse(sessionStorage.getItem('sankhya-page-transition') || 'null');
+        sessionStorage.removeItem('sankhya-page-transition');
+        sessionStorage.removeItem('sankhya-page-smoke');
+        if (handoff?.to === location.pathname && Date.now() - handoff.at < 6000) entering = true;
+      } catch { /* the recap entrance also works without browser storage */ }
+      if (!reduced && entering) {
+        document.documentElement.classList.add('page-entering');
+        setTimeout(() => document.documentElement.classList.remove('page-entering'), 1400);
       }
-    } catch { /* normal page loading without storage */ }
+    } catch { /* native page loading */ }
   </script>
+  <style>
+    .page-transition{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#1B4D32;color:#F4E7C3;visibility:hidden;transform:translate3d(0,100%,0)}
+    .page-entering .page-transition{visibility:visible;transform:translate3d(0,0,0)}
+    .page-transition__content{width:min(76vw,760px);text-align:center}
+    .page-transition__wordmark{display:block;width:100%;aspect-ratio:1590/460;background:currentColor;-webkit-mask:url('/logo/sankhya-recap.svg?v=3') center/contain no-repeat;mask:url('/logo/sankhya-recap.svg?v=3') center/contain no-repeat}
+    .page-transition__caption{font:italic clamp(30px,5vw,64px)/1 Georgia,serif}
+    .transition-motif-band{height:36px;margin-top:24px}
+    .page-transition{font-family:Geist,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+    .page-transition__content{position:relative;z-index:1;padding:32px 0}
+    .page-transition__kicker,.page-transition__note{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin:0}
+    .page-transition__kicker{margin-bottom:48px}
+    .page-transition__caption{margin:12px 0 0}
+    .transition-motif-band{display:flex;align-items:center;justify-content:center;gap:24px;color:#FFD129}
+    .transition-motif{width:28px;height:28px;flex:none}
+    .transition-motif:nth-child(3){width:36px;height:36px}
+    .page-transition__progress{width:min(220px,50vw);height:2px;margin:48px auto 24px;background:rgba(244,231,195,.18);overflow:hidden}
+    .page-transition__progress span{display:block;width:100%;height:100%;background:#F4E7C3;transform:scaleX(.64);transform-origin:left}
+    @media(prefers-reduced-motion:reduce){.page-transition{display:none}}
+  </style>
 </head>
-<body>
-  <div class="page-smoke" aria-hidden="true">
-    <div class="page-smoke__veil"></div>
-    <div class="page-smoke__plume page-smoke__plume--far"></div>
-    <div class="page-smoke__plume page-smoke__plume--near"></div>
+<body data-page="recap">
+  <div class="page-transition" aria-hidden="true">
+    <div class="page-transition__content">
+      <p class="page-transition__kicker">TISS Mumbai · School of Analytics</p>
+      <span class="page-transition__wordmark"></span>
+      <p class="page-transition__caption" data-transition-caption>recap</p>
+      <div class="transition-motif-band" aria-hidden="true"><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M36 86C6 76 7 43 32 34C57 26 65 8 61 3C89 22 92 64 70 82C60 91 46 92 36 86Z M42 72C25 63 30 46 44 45C56 44 63 37 65 28C78 51 65 80 42 72Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z M18 32C34 34 43 45 46 62C28 54 21 46 18 32Z M82 32C66 34 57 45 54 62C72 54 79 46 82 32Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 48C28 36 30 17 50 9C70 17 72 36 50 48Z M52 49C56 25 74 19 91 33C94 54 76 63 52 49Z M52 52C78 49 88 65 76 84C56 91 44 77 52 52Z M48 52C56 77 44 91 24 84C12 65 22 49 48 52Z M48 49C24 63 6 54 9 33C26 19 44 25 48 49Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 82C30 74 12 65 9 44C28 44 38 53 50 70C34 48 34 27 50 8C66 27 66 48 50 70C62 53 72 44 91 44C88 65 70 74 50 82Z M18 32C34 34 43 45 46 62C28 54 21 46 18 32Z M82 32C66 34 57 45 54 62C72 54 79 46 82 32Z" fill="currentColor" fill-rule="evenodd"/></svg><svg class="transition-motif" viewBox="0 0 100 100" aria-hidden="true"><path d="M36 86C6 76 7 43 32 34C57 26 65 8 61 3C89 22 92 64 70 82C60 91 46 92 36 86Z M42 72C25 63 30 46 44 45C56 44 63 37 65 28C78 51 65 80 42 72Z" fill="currentColor" fill-rule="evenodd"/></svg></div>
+      <div class="page-transition__progress"><span></span></div>
+      <p class="page-transition__note">The moments stay with us.</p>
+    </div>
   </div>
   <a class="skip" href="#main">Skip to content</a>
 
@@ -43,19 +73,22 @@
   <header class="nav" data-nav>
     <div class="nav__inner">
       <div class="nav__pill nav__pill--brand glass">
+        <span class="glass__shine" aria-hidden="true"></span>
         <a class="nav__brand logo-trigger" href="index.html" data-cursor="Back home" aria-label="Sankhya '27 — back home">
-          <img src="/img/TISS_logo.png" alt="TISS" width="26" height="29" />
+          <img src="/img/TISS_logo.png" alt="TISS" width="36" height="41" />
           <span class="nav__sep" aria-hidden="true"></span>
-          <span class="nav__mark logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span>
+          <span class="nav__mark logo-wrap"><img class="logo logo--graffiti" data-logo="graffiti" src="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" alt="Sankhya" draggable="false" /></span>
         </a>
       </div>
       <nav class="nav__links nav__pill pill-nav glass" aria-label="Primary" data-pill-nav>
+        <span class="glass__shine" aria-hidden="true"></span>
         <span class="pill-nav__ind" aria-hidden="true"></span>
         <a class="pill-nav__link" href="index.html" data-cursor="Back home">Home</a>
-        <a class="pill-nav__link" href="#recap" data-cursor="Relive 2026" aria-current="true">Archive</a>
+        <a class="pill-nav__link" href="#recap" data-cursor="View recap" aria-current="true">Recap</a>
         <a class="pill-nav__link" href="index.html#contact" data-cursor="Reach the team">Contact</a>
       </nav>
       <div class="nav__pill nav__pill--cta glass">
+        <span class="glass__shine" aria-hidden="true"></span>
         <a class="btn btn--primary btn--sm" href="index.html#register" data-register data-cursor="Opens soon">
           <span>Register</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7" /></svg>
         </a>
@@ -67,51 +100,95 @@
   <div class="menu" id="menu" hidden>
     <nav aria-label="Mobile">
       <a href="index.html">Home</a>
-      <a href="#recap">'26 Recap</a>
+      <a href="#recap">Recap</a>
       <a href="index.html#register">Register</a>
       <a href="index.html#contact">Contact</a>
     </nav>
   </div>
 
   <main id="main">
-    <!-- ── 2026 ARCHIVE ───────────────────────────────────── -->
+    <!-- ── SANKHYA RECAP ──────────────────────────────────── -->
     <section class="section recap" id="recap" data-theme="recap" aria-labelledby="recap-title" style="padding-top: calc(var(--section-y) + 40px)">
       <div class="recap__glow" aria-hidden="true"></div>
       <div class="container">
         <div class="recap__head">
           <p><a class="link" href="index.html" data-cursor="Back home">← Sankhya '27</a></p>
-          <span class="mark26-trigger wordmark26" role="img" aria-label="Sankhya 2026" data-cursor="Sankhya '26"><span class="mark26" aria-hidden="true"></span><span class="wordmark26__rest" aria-hidden="true">ANKHYA</span></span>
-          <h2 id="recap-title" class="h1" data-reveal>Circle <em class="em">of</em> Life</h2>
-          <p class="recap__quote" data-fade></p>
-          <p class="mono muted" data-fade data-recap-dates></p>
+          <p class="label recap__eyebrow" data-fade>The stages. The stories. The moments that stayed.</p>
+          <h1 id="recap-title" class="recap-hero__title">
+            <span class="sr-only">Sankhya recap</span>
+            <span class="recap-wordmark" aria-hidden="true"></span>
+            <span class="recap-hero__caption" aria-hidden="true">recap</span>
+          </h1>
+          <div class="recap__intro">
+            <p class="recap__quote" data-fade></p>
+            <div class="recap__edition" data-fade><span class="label">Circle of Life</span><p class="muted" data-recap-dates></p></div>
+          </div>
         </div>
 
         <div class="stats" data-stats></div>
 
-        <div class="recap__block">
-          <div class="recap__block-head">
-            <h3 class="h3">The three days</h3>
-            <div class="tabs" role="tablist" aria-label="Sankhya '26 days" data-tabs>
-              <span class="tabs__ind" aria-hidden="true"></span>
+        <section class="recap__block film-gallery" id="recap-events" data-film-gallery aria-labelledby="film-title">
+          <div class="film-gallery__heading">
+            <div><p class="label">From the archive</p><h2 id="film-title">Event snippets</h2></div>
+            <p class="film-gallery__hint"><span class="ui-icon ui-icon--film" aria-hidden="true"></span><span data-film-hint>A frame from the archive</span></p>
+          </div>
+          <div class="film-gallery__viewport" data-film-viewport tabindex="0" role="region" aria-label="Sankhya event photographs">
+            <ol class="filmstrip" data-film-track>
+              <li class="filmstrip__frame" data-film-frame>
+                <figure>
+                  <div class="filmstrip__photo">
+                    <img src="/img/recap/events/re-vogue/fashion-01-1600.webp" srcset="/img/recap/events/re-vogue/fashion-01-960.webp 960w, /img/recap/events/re-vogue/fashion-01-1600.webp 1600w" sizes="(max-width: 767px) 86vw, (max-width: 1200px) 76vw, 960px" width="1600" height="900" alt="Participants on the Re: Vogue runway in front of the Sankhya stage backdrop." loading="lazy" decoding="async" />
+                  </div>
+                </figure>
+              </li>
+            </ol>
+          </div>
+          <div class="film-gallery__details" aria-label="Details of the selected event">
+            <div>
+              <p class="label" data-film-event-meta>Day 03 · Fashion</p>
+              <h3 data-film-event-title>Re: Vogue</h3>
+              <p class="film-gallery__kind" data-film-event-kind>Sustainable Fashion Show</p>
+            </div>
+            <div class="film-gallery__story">
+              <p data-film-event-description>A runway built on reuse and reinvention.</p>
+              <p class="film-gallery__result" data-film-event-result hidden></p>
+              <p class="film-gallery__error" data-film-error hidden>Photograph unavailable. Please try again later.</p>
             </div>
           </div>
-          <div class="days" data-days></div>
-        </div>
-
-        <div class="recap__block">
-          <div class="recap__block-head">
-            <h3 class="h3">Event snippets</h3>
-            <div class="filters" role="group" aria-label="Filter events" data-filters></div>
+          <div class="film-gallery__footer">
+            <div class="film-gallery__navigation">
+              <span class="mono film-gallery__position" data-film-position>01 / 01</span>
+              <div class="film-gallery__controls" data-film-controls hidden>
+                <button class="film-gallery__button" type="button" data-film-prev aria-label="Previous photograph"><span class="ui-icon ui-icon--left" aria-hidden="true"></span></button>
+                <button class="film-gallery__button" type="button" data-film-next aria-label="Next photograph"><span class="ui-icon ui-icon--right" aria-hidden="true"></span></button>
+              </div>
+            </div>
+            <a class="link film-gallery__continue" href="#recap-achievements">See achievements ↓</a>
           </div>
-          <div class="events" data-events></div>
-        </div>
+          <p class="sr-only" role="status" data-film-status></p>
+        </section>
 
-        <div class="recap__block achievements">
+        <div class="recap__block achievements" id="recap-achievements">
           <div class="recap__block-head">
             <h3 class="h3">Achievements</h3>
-            <p class="muted">Winners, standouts and the numbers behind them — being archived.</p>
+            <p class="muted">Sustainability, backed by independent verification.</p>
           </div>
-          <div class="ach" data-ach></div>
+          <article class="card achievement-assurance" aria-labelledby="assurance-title" data-fade>
+            <div class="assurance__copy">
+              <p class="label">Sankhya 2026 · Sustainability</p>
+              <h4 class="h3" id="assurance-title">Our greenhouse gas inventory,<br>independently verified.</h4>
+              <div class="assurance__credentials">
+                <a class="chip" href="https://www.iso.org/standard/66455.html" target="_blank" rel="noopener" aria-label="About ISO 14064-3:2019 (opens in a new tab)">ISO 14064-3:2019 ↗</a>
+                <span class="chip">Limited assurance</span>
+              </div>
+              <p>The greenhouse gas inventory in the Sankhya 2026 Sustainability Report was independently verified by <strong>Adyra ESG Technologies</strong> under a limited assurance engagement in accordance with ISO 14064-3:2019.</p>
+              <p class="assurance__scope muted">Assurance covers the greenhouse gas inventory only. Technical guidance for the report was provided by Switch Climate Tech.</p>
+            </div>
+            <a class="assurance__document" href="/reports/sankhya-2026/verification-and-technical-support.jpg" target="_blank" rel="noopener" aria-label="Read verification and technical support, page 7 of the Sankhya 2026 Sustainability Report (opens in a new tab)">
+              <img src="/reports/sankhya-2026/verification-and-technical-support.jpg" width="1002" height="1510" alt="Verification and technical support statement from the Sankhya 2026 Sustainability Report, page 7." loading="lazy" decoding="async" />
+              <span>Read the statement ↗</span>
+            </a>
+          </article>
         </div>
       </div>
     </section>
@@ -148,7 +225,7 @@
         </nav>
         <a class="btn btn--ghost btn--sm" href="#top" data-top data-cursor="Back to top"><span>Back to top</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" /></svg></a>
       </div>
-      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya — back to top"><span class="logo-wrap"><img class="logo" src="/logo/sankhya-popart.svg" alt="Sankhya" draggable="false" /></span></a>
+      <a class="footer__mark logo-trigger" href="#top" data-cursor="Back to top" aria-label="Sankhya — back to top"><span class="logo-wrap"><img class="logo logo--graffiti" data-logo="graffiti" src="/logo/SANKHYA%20Graffiti%20Comic%20Logo.png" alt="Sankhya" draggable="false" /></span></a>
       <div class="footer__bottom mono muted">
         <span>© <span data-year></span> Sankhya, TISS Mumbai</span>
         <span>Many roots. One Sankhya.</span>
